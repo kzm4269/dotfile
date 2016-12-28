@@ -1,0 +1,49 @@
+[global_config]
+  enabled_plugins = TestPlugin, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  handle_size = 1
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+  title_hide_sizetext = True
+  title_inactive_bg_color = "#303030"
+  title_inactive_fg_color = "#e6e6e6"
+  title_transmit_bg_color = "#ff5f5f"
+  title_transmit_fg_color = "#303030"
+[keybindings]
+  split_horiz = <Shift><Alt>s
+  split_vert = <Shift><Alt>v
+  switch_to_tab_1 = <Alt>1
+  switch_to_tab_10 = <Alt>0
+  switch_to_tab_2 = <Alt>2
+  switch_to_tab_3 = <Alt>3
+  switch_to_tab_4 = <Alt>4
+  switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
+  zoom_in = <Super>semicolon
+  zoom_normal = <Shift><Alt><Super>n
+  zoom_out = <Super>minus
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 590, 380
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.86
+    background_image = None
+    cursor_color = "#ffffff"
+    font = Ricty Discord for Powerline 10
+    foreground_color = "#fffaf4"
+    icon_bell = False
+    palette = "#232323:#ff000f:#8ce10b:#ffb900:#008df8:#903fff:#00d8eb:#ffffff:#444444:#ff2740:#abe15b:#ffd242:#0092ff:#9a5feb:#67fff0:#ffffff"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    use_system_font = False

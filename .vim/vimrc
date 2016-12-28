@@ -1,0 +1,4 @@
+runtime! tiny.vim
+if exists('g:vim_root') && exists('v:version') && v:version >= 700
+	runtime! huge.vim
+endif

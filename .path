@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# readlink -f
+readlink_f() {
+	test $# -eq 0 && return 1
+	local target
+	
+	target="$1"
+	cd "`dirname "$target"`"
+	target="`basename "$target"`"
+	
+	while [ -L "$target" ]; do
+		target="`readlink "$target"`"
+		cd "`dirname "$target"`"
+		target="`basename "$target"`"
+	done
+	
+	printf %s "`pwd -P`/$target"
+}
+
+dirname "`readlink_f "$0"`"

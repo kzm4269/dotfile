@@ -1,0 +1,2 @@
+#!/bin/bash
+pip list --outdated | perl -alne 'print $F[0]' | xargs -I{} pip install -U {}

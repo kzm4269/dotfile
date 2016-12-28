@@ -1,0 +1,40 @@
+#!/bin/bash
+set -eu
+
+backlight_root="/sys/class/backlight"
+if [ ! -d "$backlight_root" ]; then
+	echo "ERROR: no such a directory: $backlight_root" >&2
+	exit 1
+fi
+
+backlight_dirs=($(find "$backlight_root" -maxdepth 1 -mindepth 1 -name "${1:-*}"))
+if [ ${#backlight_dirs[@]} -eq 0 ]; then
+	printf "ERROR: backlight not found\n" >&2
+	exit 1
+fi
+
+for backlight_dir in ${backlight_dirs[@]}; do
+	max_brightness="$(cat "$backlight_dir/max_brightness")"
+	brightness="$(cat "$backlight_dir/brightness")"
+	brightness=$((100 * $brightness / $max_brightness))
+	
+	if [ $# -lt 2 ]; then
+		printf "%-18s (%3.0f %%)\n" "${backlight_dir##*/}" "$brightness"
+		continue;
+	elif ! [ "$2" -eq "$2" ] &>/dev/null; then
+		printf "%s\n" "ERROR: invalid arg: $2" >&2
+		exit 1
+	fi
+	
+	new_brightness="$2"
+	[ "$new_brightness" -lt 0 ] && new_brightness=0
+	[ "$new_brightness" -gt 100 ] && new_brightness=100
+	new_brightness=$((($new_brightness * $max_brightness + 50) / 100))
+	printf "%d\n" "$new_brightness" > "$backlight_dir/brightness"
+	
+	new_brightness="$(cat "$backlight_dir/brightness")"
+	new_brightness=$((100 * $new_brightness / $max_brightness))
+	
+	printf "%-18s (%3.0f %%)" "${backlight_dir##*/}" "$brightness"
+	printf " --> (%3.0f %%)\n" "$new_brightness"
+done

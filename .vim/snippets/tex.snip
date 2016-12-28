@@ -1,0 +1,87 @@
+snippet     figref
+abbr        Figref{fig:}
+options     head
+    \Figref{${1}}
+    
+snippet     tabref
+abbr        Tabref{tab:}
+options     head
+    \Tabref{${1}}
+    
+snippet     lstref
+abbr        Lstref{lst:}
+options     head
+    \Lstref{${1}}
+    
+snippet figure
+alias   \begin{figure} \end{figure}
+    \begin{figure}[${1}]
+        \centering\includegraphics[]{}
+        \caption{}
+        \label{fig:}
+    \end{figure}
+
+snippet subcaptionbox
+alias   \begin{figure} \end{figure}
+    \begin{figure}[${1}]
+        \centering\subcaptionbox{}[\linewidth]
+        {\includegraphics[]{}}
+        \centering
+        \subcaptionbox{}[.49\linewidth]
+        {\includegraphics[]{}}
+        \subcaptionbox{}[.49\linewidth]
+        {\includegraphics[]{}}
+        \caption{}
+        \label{fig:}
+    \end{figure}
+    
+snippet table
+alias   \begin{table} \end{table}
+    \begin{table}[${1}]
+        \centering\caption{}
+        \label{tab:}
+        \begin{tabular}{}
+        \end{tabular}
+    \end{table}
+    
+snippet     lst
+abbr        \lstinputlisting[...]{}
+options     head
+	\lstinputlisting
+    [caption=${1}, label=lst:, language=]
+    {}
+    
+snippet minipage
+alias   \begin{minipage} \end{minipage}
+    \begin{minipage}{${1}\linewidth}
+    \end{minipage}
+    
+snippet     bmatrix
+abbr        \begin{bmatrix}
+    \begin{bmatrix}
+        ${1}
+    \end{bmatrix}
+    
+snippet     cmatrix
+abbr        \begin{cmatrix}
+    \begin{cmatrix}
+        ${1}
+    \end{cmatrix}
+    
+snippet     vmatrix
+abbr        \begin{vmatrix}
+    \begin{vmatrix}
+        ${1}
+    \end{vmatrix}
+    
+snippet     Vmatrix
+abbr        \begin{Vmatrix}
+    \begin{Vmatrix}
+        ${1}
+    \end{Vmatrix}
+    
+snippet     Bmatrix
+abbr        \begin{Bmatrix}
+    \begin{Bmatrix}
+        ${1}
+    \end{Bmatrix}

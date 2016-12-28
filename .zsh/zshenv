@@ -1,0 +1,41 @@
+umask 022
+limit coredumpsize 0
+
+# -- DOTPATH
+export DOTPATH="$(source "$HOME/.path")"
+
+# -- PATH, FPATH, ...
+setopt no_global_rcs
+typeset -gxU path fpath
+path=($HOME/local/bin(N-/) $HOME/.local/bin(N-) $HOME/.bin(N-/) $path)
+fpath=($HOME/.zsh/functions(N-/) $fpath)
+
+# -- LANG
+export LANG="en_US.UTF-8"
+export LANGUAGE="en_US:en"
+export LC_ALL="$LANG"
+
+# -- EDITOR
+export EDITOR=vim
+export CVSEDITOR="$EDITOR"
+export SVN_EDITOR="$EDITOR"
+export GIT_EDITOR="$EDITOR"
+
+# -- PAGER
+export PAGER=less
+export LESS='-R -f -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+export LESSCHARSET='utf-8'
+
+# -- WORDCHARS
+export WORDCHARS='*?.[]~&;!#$%^(){}<>'
+
+# -- TERM
+[ "$TERM" = 'xterm' ] && TERM='xterm-256color'
+
+# -- GO
+export GOPATH="$HOME/.go"
+export GOBIN="$GOPATH/bin"
+path=($GOBIN $path)
+
+# -- local
+[ -s "$HOME/local/etc/zsh/zshenv" ] && source "$HOME/local/etc/zsh/zshenv"
