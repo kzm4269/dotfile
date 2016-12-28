@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-sudo -v
+sudo -v || exit
 sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable
 sudo apt-get update
 
