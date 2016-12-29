@@ -18,7 +18,6 @@ sudo apt-get install \
   vim-gtk \
   golang \
   libncurses5-dev \
-  autojump \
   trash-cli \
   xsel
 
