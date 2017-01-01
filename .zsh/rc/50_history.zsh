@@ -1,6 +1,6 @@
-export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST="$HISTSIZE"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST="$HISTSIZE"
 
 setopt append_history
 setopt bang_hist
