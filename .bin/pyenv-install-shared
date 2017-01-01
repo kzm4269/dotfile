@@ -1,0 +1,2 @@
+#!/bin/bash
+PYTHON_CONFIGURE_OPTS="--enable-shared" pyenv install "$@"

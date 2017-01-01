@@ -18,7 +18,7 @@ function __prompt() {
   [ -n "$vcs_info_msg_0_" ] && vcs=":%F{green}$vcs_info_msg_0_%f"
   
   echo "[%m:%F{yellow}%~%f$vcs]"
-  echo "%n%(?.%%.%F{red}%%%f) "
+  echo '%n%(?.$.%F{red}$%f) '
 }
 
 PROMPT='$(__prompt)'
