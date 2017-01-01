@@ -8,4 +8,6 @@ let g:indentLine_showFirstIndentLevel = -1
 
 NeoBundle 'scrooloose/nerdcommenter'
 
-NeoBundleLazy 'smancill/conky-syntax.vim', {'autoload' : {'filetypes' : ['conkyrc']}}
+NeoBundleLazy 'smancill/conky-syntax.vim', {'autoload': {'filetypes': ['conkyrc']}}
+
+NeoBundle 'chrisbra/vim-zsh', {'autoload': {'filetypes': ['sh', 'zsh']}}

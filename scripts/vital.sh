@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if test -z "${BASH_VERSION:-}" -a -z "${ZSH_VERSION:-}"; then
-	echo "not supported: $SHELL" >&2
-	exit 1
+  echo "not supported: $SHELL" >&2
+  exit 1
 fi
 
 # check environment
@@ -24,12 +24,12 @@ strlen() { echo ${#1}; }
 strstr() { [ "${1#*"$2"}" != "$1" ]; }
 isdigit() { [ "$1" -eq "$1" ] &>/dev/null; }
 lower() { 
-	[ $# -gt 1 ] && return 1
-	([ $# -eq 0 ] && cat <&0 || echo "$1") | tr '[:upper:]' '[:lower:]'
+  [ $# -gt 1 ] && return 1
+  ([ $# -eq 0 ] && cat <&0 || echo "$1") | tr '[:upper:]' '[:lower:]'
 }
 upper() { 
-	[ $# -gt 1 ] && return 1
-	([ $# -eq 0 ] && cat <&0 || echo "$1") | tr '[:lower:]' '[:upper:]'
+  [ $# -gt 1 ] && return 1
+  ([ $# -eq 0 ] && cat <&0 || echo "$1") | tr '[:lower:]' '[:upper:]'
 }
 
 # alias
@@ -37,12 +37,12 @@ _alias_stack=()
 alias_push() {
   [ -z "${BASH_VERSION}" ] || _alias_stack=(${_alias_stack[@]} "$(alias -p)")
   [ -z "${ZSH_VERSION}" ] || _alias_stack=(${_alias_stack[@]} "$(alias -L)")
-	unalias -a
+  unalias -a
 }
 alias_pop() {
-	[ -z "${ZSH_VERSION}" ] || setopt localoptions ksharrays
-	eval "${_alias_stack[0]}"
-	[ -z "${BASH_VERSION}" ] || _alias_stack=${_alias_stack[@]:1}
-	[ -z "${ZSH_VERSION}" ] || _alias_stack=${_alias_stack[@]:1}
+  [ -z "${ZSH_VERSION}" ] || setopt localoptions ksharrays
+  eval "${_alias_stack[0]}"
+  [ -z "${BASH_VERSION}" ] || _alias_stack=${_alias_stack[@]:1}
+  [ -z "${ZSH_VERSION}" ] || _alias_stack=${_alias_stack[@]:1}
 }
 
