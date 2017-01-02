@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if test -z "${BASH_VERSION:-}" -a -z "${ZSH_VERSION:-}"; then
-  echo "not supported: $SHELL" >&2
+  echo "shell not supported" >&2
   return 1
 fi
 
