@@ -1,2 +1,2 @@
 #!/bin/bash
-pip list --outdated | perl -alne 'print $F[0]' | xargs -I{} pip install -U {}
+pip list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -I{} pip install -U {}

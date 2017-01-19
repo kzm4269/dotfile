@@ -15,7 +15,7 @@ sudo apt-get install \
   git \
   tmux \
   zsh \
-  vim-gtk \
+  vim-gnome \
   golang \
   libncurses5-dev \
   trash-cli \
