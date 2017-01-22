@@ -2,10 +2,14 @@
 has fzf || return
 
 export FZF_DEFAULT_OPTS='
-  --ansi
-  --multi
-  --tac
-  --bind ctrl-f:page-down,ctrl-b:page-up
+--ansi
+--multi
+--tac
+--bind ctrl-f:page-down,ctrl-b:page-up
+'
+
+if [[ "$TERM" = *256* ]]; then
+  export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"'
   --color fg:252
   --color bg:233
   --color hl:003
@@ -17,5 +21,7 @@ export FZF_DEFAULT_OPTS='
   --color spinner:135
   --color pointer:135
   --color marker:11
-'
+  '
+fi
+
 export FZF_COMPLETION_TRIGGER='~~'
