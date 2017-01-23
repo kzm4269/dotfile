@@ -4,9 +4,11 @@ has fzf || return
 export FZF_DEFAULT_OPTS='
 --ansi
 --multi
---tac
+--cycle
+--reverse
 --bind ctrl-f:page-down,ctrl-b:page-up
 '
+
 export FZF_CTRL_R_OPTS='
 --reverse
 '
