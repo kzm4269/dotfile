@@ -7,6 +7,9 @@ export FZF_DEFAULT_OPTS='
 --tac
 --bind ctrl-f:page-down,ctrl-b:page-up
 '
+export FZF_CTRL_R_OPTS='
+--reverse
+'
 
 if [[ "$TERM" = *256* ]]; then
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"'

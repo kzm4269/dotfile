@@ -6,3 +6,7 @@ for repo in "${repos[@]}"; do
     cd "$repo" && git reset --hard && git pull --force
   fi
 done
+
+if [ -d ~/.fzf ]; then
+  ~/.fzf/install --key-bindings --completion --no-update-rc
+fi
