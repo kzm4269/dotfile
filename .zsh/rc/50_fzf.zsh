@@ -11,7 +11,7 @@ export FZF_CTRL_R_OPTS='
 --reverse
 '
 
-if [[ "$TERM" = *256* ]]; then
+if [ $(xterm_color_count) -ge 256 ]; then
   export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"'
   --color fg:252
   --color bg:233
