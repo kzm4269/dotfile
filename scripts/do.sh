@@ -1,6 +1,6 @@
 #!/bin/bash
 set -u
-source "$DOTPATH/scripts/vital.sh"
+source "$DOTPATH/scripts/vital.sh" || return 1
 
 [ ! -d "$1" ] && exit
 printf "do: %s\n" "$1/"

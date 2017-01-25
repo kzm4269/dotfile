@@ -6,6 +6,12 @@ autoload -Uz colors && colors
 autoload -Uz compinit && compinit -u
 zmodload zsh/complist
 
+# -- TERM
+if [[ "$TERM" = xterm ]]; then
+  source "$DOTPATH/scripts/xterm-color-count.sh"
+  [[ "$XTERM_COLOR_COUNT" = 256 ]] && TERM=xterm-256color
+fi
+
 # -- rc
 for s in "$HOME/.zsh/rc"/*.zsh(N); do source "$s"; done
 for s in "$HOME/local/etc/zsh/rc"/*.zsh(N); do source "$s"; done

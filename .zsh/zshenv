@@ -29,10 +29,6 @@ export LESSCHARSET='utf-8'
 # -- WORDCHARS
 export WORDCHARS='*?.[]~&;!#$%^(){}<>'
 
-# -- TERM
-[[ "${COLORTERM:-}" = gnome-terminal && ! "$TERM" = screen-256color ]] &&
-  TERM=xterm-256color
-
 # -- GO
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
