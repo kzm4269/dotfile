@@ -12,13 +12,14 @@ if [[ "$TERM" = xterm ]]; then
   [[ "$XTERM_COLOR_COUNT" = 256 ]] && TERM=xterm-256color
 fi
 
+echo 'now loading...'
+
 # -- rc
 for s in "$HOME/.zsh/rc"/*.zsh(N); do source "$s"; done
 for s in "$HOME/local/etc/zsh/rc"/*.zsh(N); do source "$s"; done
 
 # -- zplug load
 if [ -f "$HOME/.zplug/init.zsh" ]; then
-  echo "zplug init"
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zsh"
   source "$HOME/.zplug/init.zsh"
 
@@ -27,7 +28,6 @@ if [ -f "$HOME/.zplug/init.zsh" ]; then
     read; [[ "$REPLY" =~ ^([yY]|)$ ]] && zplug install
   fi
 
-  echo "zplug load"
   zplug load
 fi
 
