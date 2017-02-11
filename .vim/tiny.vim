@@ -23,6 +23,9 @@ endif
 if exists('&conceallevel')
 	set conceallevel=0
 endif
+if exists('&display')
+  set display=lastline
+endif
 
 " match
 set showmatch
