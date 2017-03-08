@@ -5,7 +5,7 @@ if has direnv; then
 fi
 
 if has anyenv; then
-  eval "$(anyenv init -)"
+  eval "$(anyenv init - zsh)"
 fi
 
 if pyenv virtualenv-init &>/dev/null; then
