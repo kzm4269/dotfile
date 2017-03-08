@@ -19,8 +19,14 @@ sudo apt-get install \
   golang \
   libncurses5-dev \
   trash-cli \
-  xsel
+  xsel \
+  p7zip \
+  unar \
+  inkscape \
+  ffmpeg \
+  imagemagick
 
 # gui
 sudo apt-get install \
-  fcitx-mozc
+  fcitx-mozc \
+  gimp
