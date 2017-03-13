@@ -1,0 +1,39 @@
+[user]
+	name = kzm4269
+	email = 4269kzm@gmail.com
+[push]
+	default = simple
+[pull]
+	ff = only
+[merge]
+	ff = false
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	# abbreviation
+	co = checkout
+	st = status -u -s
+	# listing
+	branches = branch -a
+	tags = tag
+	stashes = stash list
+	remotes = remote -v
+	commits = !git --no-pager history
+	# log
+	history = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+	graph = log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --date-order --branches --remotes --tags
+	# check
+	pre-add = diff
+	pre-commit = diff --cached
+	# reset
+	reset-add = reset --quiet HEAD --
+	reset-commit = reset --mixed HEAD~
+	reset-all = !git reset --hard HEAD && git clean -d -f
+	reset-stash = stash pop
+	reset-stash-apply = !git stash -p | git apply -R
+	# ammend
+	amend = commit --amend --no-edit
+	amend-message = commit --amend
+
