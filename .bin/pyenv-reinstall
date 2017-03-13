@@ -1,0 +1,10 @@
+#!/bin/bash
+set -eu
+requirements="requirements_$(date +"%Y-%m-%d-%H-%M-%S").txt"
+version="$(pyenv local)"
+install="${1:-install}"
+
+pip list --format columns | awk '{print $1}' | tail -n +3 > "$requirements"
+pyenv uninstall "$version" || :
+pyenv "$install" -v "$version"
+cat "$requirements" | xargs -I{} pip install -U {}
