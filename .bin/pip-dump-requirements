@@ -1,0 +1,3 @@
+#!/bin/bash
+pip="${1:-pip}"
+"$pip" list --format columns | awk '{print $1}' | tail -n +3
