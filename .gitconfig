@@ -22,8 +22,8 @@
 	remotes = remote -v
 	commits = !git --no-pager history
 	# log
-	history = log --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset' --abbrev-commit
-	graph = log --graph --pretty=format:'%C(yellow)%h%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset %C(yellow)%d%Creset' --abbrev-commit --date-order --branches --remotes --tags
+	history = log --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset' --abbrev-commit --date=relative
+	graph = log --graph --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset%C(bold yellow)%d%Creset' --abbrev-commit --date=relative --branches --remotes --tags
 	# check
 	pre-add = diff
 	pre-commit = diff --cached
