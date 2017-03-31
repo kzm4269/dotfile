@@ -44,3 +44,7 @@ esac
 
 # -- etc
 has trash-put && alias tp='trash-put'
+
+if has keychain; then
+  alias eval_keychain='eval "$(keychain --eval --quiet --agents ssh id_rsa)"'
+fi
