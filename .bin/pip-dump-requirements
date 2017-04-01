@@ -1,3 +1,3 @@
 #!/bin/bash
-pip="${1:-pip}"
-"$pip" list --format columns | awk '{print $1}' | tail -n +3
+[ $# -eq 0 ] && set -- pip
+"$@" list --format columns | awk '{print $1}' | tail -n +3
