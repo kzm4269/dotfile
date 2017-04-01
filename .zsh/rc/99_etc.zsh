@@ -15,4 +15,6 @@ if has pip; then
   compctl -K _pip_completion pip
 fi
 
-eval "$(keychain --eval --quiet --agents ssh id_rsa)"
+if has keychain; then
+  eval "$(keychain --eval --quiet --agents ssh id_rsa)"
+fi
