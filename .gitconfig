@@ -21,6 +21,7 @@
 	stashes = stash list
 	remotes = remote -v
 	commits = !git --no-pager history
+	submodules = submodule
 	# log
 	history = log --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset' --abbrev-commit --date=relative
 	graph = log --graph --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset%C(bold yellow)%d%Creset' --abbrev-commit --date=relative --branches --remotes --tags
