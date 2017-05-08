@@ -1,7 +1,7 @@
 NeoBundleLazy 'Shougo/unite.vim', {
-			\ 'autoload': {
-			\	 'commands': ['Unite', 'UniteWithBufferDir']
-			\ }}
+      \ 'autoload': {
+      \   'commands': ['Unite', 'UniteWithBufferDir']
+      \ }}
 NeoBundle 'Shougo/neomru.vim'
 
 let g:vinarise_enable_auto_detect = 1

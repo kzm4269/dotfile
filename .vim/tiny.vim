@@ -1,7 +1,7 @@
 "==== options
 set nocompatible
 if 1
-	let g:vim_root = expand('$HOME/.vim')
+  let g:vim_root = expand('$HOME/.vim')
 endif
 
 " show
@@ -12,16 +12,16 @@ set showcmd
 set laststatus=2
 set lazyredraw
 if exists('&showtabline')
-	set showtabline=2
+  set showtabline=2
 endif
 if exists('&colorcolumn')
-	set colorcolumn=80
+  set colorcolumn=80
 endif
 if exists('&relativenumber')
-	set relativenumber
+  set relativenumber
 endif
 if exists('&conceallevel')
-	set conceallevel=0
+  set conceallevel=0
 endif
 if exists('&display')
   set display=lastline
@@ -31,7 +31,7 @@ endif
 set showmatch
 set matchtime=3
 if exists('&matchpairs')
-	set matchpairs=(:),[:],{:},<:>
+  set matchpairs=(:),[:],{:},<:>
 endif
 
 " wrap
@@ -47,10 +47,10 @@ set novisualbell
 set scrolloff=5
 set whichwrap=b,s
 if exists('&cursorline')
-	set cursorline
+  set cursorline
 endif
 if exists('&virtualedit')
-	set virtualedit+=block
+  set virtualedit+=block
 endif
 
 " search
@@ -72,78 +72,78 @@ set shiftwidth=2
 " buffer
 set hidden
 if exists('&switchbuf')
-	set switchbuf=useopen
+  set switchbuf=useopen
 endif
 
 " edit
-set backspace=2
+set backspace=indent,eol,start
 if exists('&history')
-	set history=1000
+  set history=1000
 endif
 if exists('&autoread')
-	set autoread
+  set autoread
 endif
 if has('clipboard')
-	set clipboard=unnamed,autoselect
-	if has('unnamedplus')
-		set clipboard+=unnamedplus
-	endif
+  set clipboard=unnamed,autoselect
+  if has('unnamedplus')
+    set clipboard+=unnamedplus
+  endif
 endif
 
 " backup, swap, undo
 set nobackup
 if exists('&swapfile')
-	set noswapfile
+  set noswapfile
 endif
 if exists('&undofile')
-	set noundofile
+  set noundofile
 endif
 if exists('g:vim_root')
-	set backup
-	let &backupdir = g:vim_root . '/var/backup//'
-	if !isdirectory(&backupdir)
-		call mkdir(&backupdir, 'p')
-	endif
-	if exists('&swapfile')
-		set swapfile
-		let &directory = g:vim_root . '/var/swap//'
-		if !isdirectory(&directory)
-			call mkdir(&directory, 'p')
-		endif
-	endif
-	if exists('&undofile')
-		set undofile
-		let &undodir = g:vim_root . '/var/undo//'
-		if !isdirectory(&undodir)
-			call mkdir(&undodir, 'p')
-		endif
-	endif
+  set backup
+  let &backupdir = g:vim_root . '/var/backup//'
+  if !isdirectory(&backupdir)
+    call mkdir(&backupdir, 'p')
+  endif
+  if exists('&swapfile')
+    set swapfile
+    let &directory = g:vim_root . '/var/swap//'
+    if !isdirectory(&directory)
+      call mkdir(&directory, 'p')
+    endif
+  endif
+  if exists('&undofile')
+    set undofile
+    let &undodir = g:vim_root . '/var/undo//'
+    if !isdirectory(&undodir)
+      call mkdir(&undodir, 'p')
+    endif
+  endif
 endif
 
 " syntax
 if has('syntax')
-	syntax on
+  syntax on
 endif
 
 highlight Visual term=reverse cterm=reverse ctermbg=none
 if exists(':colorscheme')
-    colorscheme molokai
+  colorscheme molokai
 endif
 
 if exists('v:version')
-	filetype on
-	if v:version >= 600
-		filetype indent on
-		filetype plugin on
-		set list listchars=tab:\.\ ,extends:»,precedes:« "不可視文字の設定
-	endif
+  filetype on
+  if v:version >= 600
+    filetype indent on
+    filetype plugin on
+    set list listchars=tab:\.\ ,extends:»,precedes:« "不可視文字の設定
+  endif
 endif
 
 
 "==== keymap
 if 1
-	let mapleader = ','
-	noremap \  ,
+  let mapleader = ','
+  noremap \  ,
 endif
 
 "---- toggle
@@ -192,30 +192,30 @@ inoremap <End>      <Nop>
 "---- search
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v, '\/'), '\n', '\\n', 'g')<CR><CR>
 if exists(':nohlsearch')
-    nmap <Esc><Esc> :<C-u>nohlsearch<CR>
+  nmap <Esc><Esc> :<C-u>nohlsearch<CR>
 endif
 
 "---- tab
 if exists(':tabnew')
-	nnoremap [Tab] <Nop>
-	nmap     <Tab> [Tab]
-	nnoremap [Tab]<TAB> :<C-u>tabnext<CR>
-	nnoremap [Tab]h     :<C-u>tabprev<CR>
-	nnoremap [Tab]j     :<C-u>tabprev<CR>
-	nnoremap [Tab]k     :<C-u>tabnext<CR>
-	nnoremap [Tab]l     :<C-u>tabnext<CR>
-	nnoremap [Tab]n     :<C-u>tabnew<CR>
-	nnoremap [Tab]c     :<C-u>tabclose<CR>
-	nnoremap [Tab]q     :<C-u>tabclose<CR>
-	nnoremap <silent> [Tab]1 :<C-u>tabnext1<CR>
-	nnoremap <silent> [Tab]2 :<C-u>tabnext2<CR>
-	nnoremap <silent> [Tab]3 :<C-u>tabnext3<CR>
-	nnoremap <silent> [Tab]4 :<C-u>tabnext4<CR>
-	nnoremap <silent> [Tab]5 :<C-u>tabnext5<CR>
-	nnoremap <silent> [Tab]6 :<C-u>tabnext6<CR>
-	nnoremap <silent> [Tab]7 :<C-u>tabnext7<CR>
-	nnoremap <silent> [Tab]8 :<C-u>tabnext8<CR>
-	nnoremap <silent> [Tab]9 :<C-u>tabnext9<CR>
+  nnoremap [Tab] <Nop>
+  nmap     <Tab> [Tab]
+  nnoremap [Tab]<TAB> :<C-u>tabnext<CR>
+  nnoremap [Tab]h     :<C-u>tabprev<CR>
+  nnoremap [Tab]j     :<C-u>tabprev<CR>
+  nnoremap [Tab]k     :<C-u>tabnext<CR>
+  nnoremap [Tab]l     :<C-u>tabnext<CR>
+  nnoremap [Tab]n     :<C-u>tabnew<CR>
+  nnoremap [Tab]c     :<C-u>tabclose<CR>
+  nnoremap [Tab]q     :<C-u>tabclose<CR>
+  nnoremap <silent> [Tab]1 :<C-u>tabnext1<CR>
+  nnoremap <silent> [Tab]2 :<C-u>tabnext2<CR>
+  nnoremap <silent> [Tab]3 :<C-u>tabnext3<CR>
+  nnoremap <silent> [Tab]4 :<C-u>tabnext4<CR>
+  nnoremap <silent> [Tab]5 :<C-u>tabnext5<CR>
+  nnoremap <silent> [Tab]6 :<C-u>tabnext6<CR>
+  nnoremap <silent> [Tab]7 :<C-u>tabnext7<CR>
+  nnoremap <silent> [Tab]8 :<C-u>tabnext8<CR>
+  nnoremap <silent> [Tab]9 :<C-u>tabnext9<CR>
 endif
 
 " etc

@@ -3,23 +3,23 @@
 has() { type "$1" &>/dev/null; }
 
 _find-python-include-dir-linux() {
-	python-config --includes \
-		| perl -ne 'chomp; print $1 if /^-I(\S+)/'
+  python-config --includes \
+    | perl -ne 'chomp; print $1 if /^-I(\S+)/'
 }
 
 _find-python-library-linux() {
-	local ld_arg="$(python-config --ldflags | perl -pne 'chomp; s/-[^lL]\S+//g')"
-	ld ${ld_arg} --verbose -o /dev/null 2>/dev/null \
-		| perl -ne 'chomp; print $1 if m!^attempt to open (/.*/libpython.*) succeeded$!'
+  local ld_arg="$(python-config --ldflags | perl -pne 'chomp; s/-[^lL]\S+//g')"
+  ld ${ld_arg} --verbose -o /dev/null 2>/dev/null \
+    | perl -ne 'chomp; print $1 if m!^attempt to open (/.*/libpython.*) succeeded$!'
 }
 
 case "$(uname)" in
-	Linux*|Darwin*)
-		has python-config || exit 1
-		has perl || exit 1
-		printf "%s " "-DPYTHON_INCLUDE_DIR='$(_find-python-include-dir-linux)'"
-		printf "%s " "-DPYTHON_LIBRARY='$(_find-python-library-linux)'"
-		;;
-	*)
-		exit 1
+  Linux*|Darwin*)
+    has python-config || exit 1
+    has perl || exit 1
+    printf "%s " "-DPYTHON_INCLUDE_DIR='$(_find-python-include-dir-linux)'"
+    printf "%s " "-DPYTHON_LIBRARY='$(_find-python-library-linux)'"
+    ;;
+  *)
+    exit 1
 esac

@@ -14,4 +14,4 @@ eval "$("$anyenv" init -)"
 
 # pyenv-virtualenv
 [ -d "$anyenv_home/envs/pyenv/plugins/pyenv-virtualenv" ] ||
-	git clone https://github.com/yyuu/pyenv-virtualenv "$anyenv_home/envs/pyenv/plugins/pyenv-virtualenv"
+  git clone https://github.com/yyuu/pyenv-virtualenv "$anyenv_home/envs/pyenv/plugins/pyenv-virtualenv"
