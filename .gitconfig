@@ -37,4 +37,4 @@
 	# ammend
 	amend = commit --amend --no-edit
 	amend-message = commit --amend
-
+	track-remote-branches = !git-track-remote-branches

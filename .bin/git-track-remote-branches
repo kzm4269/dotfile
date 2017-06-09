@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eu
+remote="${1:-origin}"
+prefix="remotes/$remote/"
+for local_branch in $(git branch -a | grep -e "^[* ] $prefix" | sed "s!^[* ] $prefix!!" | grep -ve '^HEAD '); do
+  git rev-parse --verify "$local_branch" >/dev/null 2>&1 ||
+    git branch --track "$local_branch" "$prefix$local_branch"
+done
