@@ -224,7 +224,7 @@ if &t_Co > 255
    hi WarningMsg      ctermfg=231 ctermbg=238   cterm=bold
    hi WildMenu        ctermfg=81  ctermbg=16
 
-   hi Comment         ctermfg=59
+   hi Comment         ctermfg=243
    hi CursorColumn                ctermbg=236
    hi ColorColumn                 ctermbg=236
    hi LineNr          ctermfg=239 ctermbg=233
@@ -234,7 +234,7 @@ if &t_Co > 255
 
    if exists("g:rehash256") && g:rehash256 == 1
        hi Normal       ctermfg=252 ctermbg=234
-       hi CursorLine               ctermbg=236   cterm=none
+       hi CursorLine               ctermbg=236   cterm=reverse
        hi CursorLineNr ctermfg=208               cterm=none
 
        hi Boolean         ctermfg=141
