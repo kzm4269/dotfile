@@ -49,6 +49,4 @@ function () {
   done
 }
 
-if has zprof; then
-  zprof | less
-fi
+has zprof && zprof | less
