@@ -1,0 +1,38 @@
+#compdef wmctrl
+
+_wmctrl() {
+  IFS=$'\n'
+  local options=()
+  local windows=($(for win in $(wmctrl -l); echo "${win%% *}:${${${${win#* }#* }#* }#* }"))
+  local desktops=($(for desk in $(wmctrl -d); echo "${desk%% *}:${desk#* }"))
+  
+  _arguments \
+    '-m[Show information about the window manager and about the environment.]' \
+    '-l[List windows managed by the window manager.]' \
+    '-d[List desktops. The current desktop is marked with an asterisk.]' \
+    '-s[Switch to the specified desktop.]:desktop:->desktops' \
+    '-a[Activate the window by switching to its desktop and raising it.]:window:->windows' \
+    '-c[Close the window gracefully.]:window:->windows' \
+    '-R[Move the window to the current desktop and activate it.]:window:->windows' \
+    '-r[Select window.]:window:->windows' \
+    '-t[Move the window to the specified desktop.]:desktop:->desktops' \
+    '-e[Resize and move the window around the desktop. The format of the <MVARG> argument is described below.]' \
+    "-b[Change the state of the window. Using this option it's possible for example to make the window maximized, minimized or fullscreen. The format of the <STARG> argument and list of possible states is given below.]" \
+    '-N[Set the name (long title) of the window.]' \
+    '-I[Set the icon name (short title) of the window.]' \
+    '-T[Set both the name and the icon name of the window.]' \
+    "-k[Activate or deactivate window manager's \"showing the desktop\" mode. Many window managers do not implement this mode.]:on_off:->on_off" \
+    '-o[Change the viewport for the current desktop. The X and Y values are separated with a comma. They define the top left corner of the viewport. The window manager may ignore the request.]' \
+    '-n[Change number of desktops. The window manager may ignore the request.]' \
+    '-g[Change geometry (common size) of all desktops. The window manager may ignore the request.]' \
+    '(- *)-h[Print help.]'
+    
+  case "$state" in
+    windows)
+      _describe 'windows' options -- windows;;
+    desktops)
+      _describe 'desktops' options -- desktops;;
+    on_off)
+      compadd on off;;
+  esac
+}
