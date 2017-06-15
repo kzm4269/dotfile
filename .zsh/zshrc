@@ -34,6 +34,9 @@ fi
 for s in "$HOME/.zsh/after/rc"/*.zsh(N); do source "$s"; done
 for s in "$HOME/local/etc/zsh/after/rc"/*.zsh(N); do source "$s"; done
 
+# -- zprof
+has zprof && zprof | less
+
 # -- logo
 function () {
   local i j s
@@ -48,5 +51,3 @@ function () {
     echo
   done
 }
-
-has zprof && zprof | less
