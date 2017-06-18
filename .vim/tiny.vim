@@ -225,3 +225,4 @@ nnoremap o oX<C-h>
 nnoremap O OX<C-h>
 cnoremap w!! w !sudo tee > /dev/null % 
 
+command! -range WordCount :%s/\%V./\0/gn |:noh
