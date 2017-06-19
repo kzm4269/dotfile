@@ -1,4 +1,4 @@
 #!/bin/bash
 [ $# -eq 0 ] && set -- pip
 "$@" install -U pip
-"$@" list --outdated --format=columns | tail -n +3 | awk '{print $1}' | xargs -I{} "$@" install -U {}
+"$@" list --format=columns | tail -n +3 | awk '{print $1}' | xargs -I{} "$@" install -U {}
