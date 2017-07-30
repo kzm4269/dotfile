@@ -11,3 +11,6 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundleLazy 'smancill/conky-syntax.vim', {'autoload': {'filetypes': ['conkyrc']}}
 
 NeoBundle 'chrisbra/vim-zsh', {'autoload': {'filetypes': ['sh', 'zsh']}}
+
+NeoBundleLazy 'elzr/vim-json', {'autoload': {'filetypes': ['json']}}
+let g:vim_json_syntax_conceal = 0
