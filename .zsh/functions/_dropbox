@@ -1,0 +1,35 @@
+#compdef dropbox 
+
+__dropbox_command() {
+  local -a list
+  list=(
+  status:'get current status of the dropboxd'
+  throttle:'set bandwidth limits for Dropbox'
+  help:'provide help'
+  puburl:'get public url of a file in your dropbox'"'"'s public folder'
+  stop:'stop dropboxd'
+  running:'return whether dropbox is running'
+  start:'start dropboxd'
+  filestatus:'get current sync status of one or more files'
+  ls:'list directory contents with current sync status'
+  autostart:'automatically start dropbox at login'
+  exclude:'ignores/excludes a directory from syncing'
+  lansync:'enables or disables LAN sync'
+  sharelink:'get a shared link for a file in your dropbox'
+  proxy:'set proxy settings for Dropbox')
+  _describe -t commands 'commands' list && _ret=0
+}
+
+_dropbox() {
+  _arguments -C '(-): :->command' '(-)*:: :->arg' && return
+
+  case $state in
+    (command)
+      _alternative \
+        'commands:commands:__dropbox_command' \
+        && _ret=0
+      ;;
+    (arg)
+      ;;
+  esac
+}
