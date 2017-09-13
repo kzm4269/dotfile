@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import argparse
+import sys
+import re
+
+import requests
+from lxml import html
+
+argparser = argparse.ArgumentParser()
+argparser.add_argument('version', help='version of python')
+argparser.add_argument('--list-note', action='store_true')
+argparser.add_argument('--include')
+argparser.add_argument('--include-all', action='store_true')
+argparser.add_argument('--exclude-common', action='store_true')
+args = argparser.parse_args()
+
+docs_url = 'https://docs.python.org/{}/py-modindex.html'.format(args.version)
+docs = requests.get(docs_url)
+docs_html = html.fromstring(docs.content)
+print('# Python Standard Library (' + docs_url + ')')
+
+all_note = set()
+for tr in docs_html.xpath('//tr[./td/a/code[@class="xref"]]'):
+    td = tr.xpath('./td')
+    module_name = td[1].xpath('./a/code')[0].text
+    description = tr.xpath('./td/em')[-1].text or ''
+    
+    note = td[1].xpath('./em')
+    if note:
+        note = re.sub(r'[\s()]', '', note[0].text).split(',')
+    for strong in td[2].xpath('./strong'):
+        assert strong.text == 'Deprecated:'
+        note = ['Deprecated'] + note
+    
+    all_note |= set(note)
+    if args.list_note:
+        continue
+    
+    if module_name.startswith('_'):
+        continue
+    if note:
+        description = '(' + ', '.join(note) + ') ' + description
+    if not args.include_all and not set(re.sub(r'\s', '', args.include or '').split(',')) >= set(note):
+        continue
+    if not note and args.exclude_common:
+        continue
+    print('{:35s} # {}'.format(module_name, re.sub(r'[\r\n]+\s*', ' ', description)))
+
+if args.list_note:
+    print(','.join(all_note))
+
+

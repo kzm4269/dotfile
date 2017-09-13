@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+import sys
+import re
+import os
+import site
+from distutils.sysconfig import get_python_lib
+
+
+def module_origin(name):
+    if sys.version_info.major == 2:
+        import imp
+        _, origin, (_, _, modtype) = imp.find_module(name)
+        if modtype == imp.C_BUILTIN:
+            return 'built-in'
+        return origin
+    try:
+        return next(
+            finder.find_spec(name).origin 
+            for finder in sys.meta_path 
+            if finder.find_module(name))
+    except StopIteration:
+        raise Exception('cannot find module: ' + name)
+
+
+def package_path(origin):
+    if os.path.basename(origin) == '__init__.py':
+        return os.path.dirname(origin)
+    return origin
+
+
+def is_standard_lib(origin):
+    prefix = get_python_lib(standard_lib=True)
+    if origin == 'built-in':
+        return True
+    if os.path.dirname(package_path(origin)) in (prefix, os.path.join(prefix, 'lib-dynload')):
+        return True
+    return False
+
+
+def is_site_package(origin):
+    return os.path.dirname(package_path(origin)) in site.getsitepackages()
+
+
+def _main():
+    standard_lib = []
+    site_packages = []
+    other_lib = []
+
+    for line in sys.stdin.readlines():
+        line = line.strip()
+        match = re.match(r'(from|import)\s+([a-zA-Z0-9_]+)', line)
+        if not match:
+            continue
+        origin = module_origin(match.group(2))
+        
+        if is_standard_lib(origin):
+            standard_lib.append(line)
+        elif is_site_package(origin):
+            site_packages.append(line)
+        else:
+            other_lib.append(line)
+
+    for lines in (standard_lib, site_packages, other_lib):
+        print('\n'.join(sorted(lines, key=lambda line: line.startswith('from'))))
+        if lines:
+            print('')
+
+
+if __name__ == '__main__':
+    _main()
+
