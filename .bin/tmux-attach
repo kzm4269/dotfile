@@ -1,0 +1,24 @@
+#!/bin/bash
+if ! type tmux >/dev/null 2>&1; then
+  echo 'tmux is not available'
+  exit 1
+elif ! type fzf >/dev/null 2>&1; then
+  echo 'fzf is not available'
+  exit 1
+fi
+
+if [ ! -z "${1:-}" ]; then
+  session="$1"
+elif tmux list-sessions >/dev/null 2>&1; then
+  session="$(tmux list-sessions | fzf | sed -e 's/\([^:]*\):.*/\1/')"
+else
+  session="main"
+fi
+
+if [ -z "${session:-}" ]; then 
+  exit
+elif tmux list-sessions 2>&1 | grep -qF "$session"; then
+  tmux attach-session -d -t "$session"
+else
+  tmux new-session -s "$session"
+fi
