@@ -18,7 +18,7 @@ deploy:
 
 init:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/scripts/do.sh $(DOTPATH)/scripts/init
-	
+
 all: update deploy init
 	@exec $$SHELL
 
