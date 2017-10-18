@@ -10,7 +10,6 @@ if dein#load_state(g:dein_root)
   call dein#begin(g:dein_root)
   call dein#add(s:dein_repo)
   call dein#load_toml(s:dein_rc . '/plugins.toml')
-  call dein#load_toml(s:dein_rc . '/plugins-lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
