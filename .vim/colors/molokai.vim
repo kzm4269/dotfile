@@ -57,7 +57,7 @@ hi IncSearch       guifg=#C4BE89 guibg=#000000
 
 hi Keyword         guifg=#F92672               gui=bold
 hi Label           guifg=#E6DB74               gui=none
-hi Macro           guifg=#C4BE89               
+hi Macro           guifg=#C4BE89
 hi SpecialKey      guifg=#66D9EF               gui=bold
 
 hi MatchParen      guifg=#000000 guibg=#FD971F gui=bold
@@ -90,9 +90,9 @@ endif
 hi Statement       guifg=#F92672               gui=bold
 hi StatusLine      guifg=#455354 guibg=fg
 hi StatusLineNC    guifg=#808080 guibg=#080808
-hi StorageClass    guifg=#FD971F               
+hi StorageClass    guifg=#FD971F
 hi Structure       guifg=#66D9EF
-hi Tag             guifg=#F92672               
+hi Tag             guifg=#F92672
 hi Title           guifg=#ef5939
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
 

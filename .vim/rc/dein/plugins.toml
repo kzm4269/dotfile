@@ -1,0 +1,67 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'context_filetype.vim'
+hook_add = '''
+let g:precious_enable_switch_CursorHold = {'*' : 0}
+let g:precious_enable_switch_CursorMoved = {'*' : 0, 'help': 1}
+let g:precious_enable_switch_CursorMoved_i = {'*' : 0}
+
+augroup Vimrc
+  autocmd InsertEnter * :PreciousSwitch
+  autocmd InsertLeave * :PreciousReset
+augroup END
+'''
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indentLine_showFirstIndentLevel = -1
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+
+let g:airline_theme = 'wombat'
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'n',
+    \ 'i'  : 'i',
+    \ 'R'  : 'R',
+    \ 'c'  : 'c',
+    \ 'v'  : 'v',
+    \ 'V'  : 'V',
+    \ 's'  : 's',
+    \ 'S'  : 'S',
+    \ }
+
+let s:percent = '%3{line(".") < line("$") ? (line(".") * 100 / line("$"))."%" : "EOF"}'
+let s:line = '%#__accent_bold#%4l/%L%#__restore__# %3v'
+
+let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
+let g:airline_section_z = s:percent.' '.s:line
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+

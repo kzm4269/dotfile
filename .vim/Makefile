@@ -1,15 +1,10 @@
+DEIN_VIM = $(CURDIR)/dein
+
 .PHONY: all
-all: var bundle
-
-var:
-	@mkdir -p var/backup
-	@mkdir -p var/swap
-	@mkdir -p var/undo
-
-bundle:
-	@mkdir $(CURDIR)/bundle
-	@git clone https://github.com/Shougo/neobundle.vim $(CURDIR)/bundle/neobundle.vim
+all:
+	@mkdir -p $(DEIN_VIM)
+	@curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s -- $(DEIN_VIM)
 
 .PHONY: clean
 clean:
-	@rm -rf $(CURDIR)/bundle
+	@rm -rf $(DEIN_VIM)
