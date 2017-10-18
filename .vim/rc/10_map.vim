@@ -64,6 +64,8 @@ nnoremap <silent> [Toggle]r :setl relativenumber!<CR>:setl relativenumber?<CR>
 nnoremap <silent> [Toggle]s :setl spell!         <CR>:setl spell?         <CR>
 nnoremap <silent> [Toggle]w :setl wrap!          <CR>:setl wrap?          <CR>
 
+" Explore
+nnoremap <Leader>e :Explore<CR>
 
 "-- insert mode
 

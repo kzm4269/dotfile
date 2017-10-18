@@ -18,6 +18,7 @@ endif
 set ruler
 set showcmd
 set laststatus=2
+set statusline=%F%m%r%w%=%{&ft}\ %{&fenc}\ %{&ff}\ %l/%L\ %v\ 0x%04B
 if exists('&cursorline')
   set cursorline
 endif
