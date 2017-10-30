@@ -76,11 +76,6 @@ lazy = 1
 on_ft = 'conkyrc'
 
 [[plugins]]
-repo = 'chrisbra/vim-zsh'
-lazy = 1
-on_ft = ['sh', 'zsh']
-
-[[plugins]]
 repo = 'elzr/vim-json'
 lazy = 1
 on_ft = 'json'

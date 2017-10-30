@@ -12,6 +12,14 @@ alias su='su -l'
 
 alias jobs='jobs -l'
 
+function find=() {
+  if [[ ${1:-} =~ ^(-[^A-Z]|[!\(\)]$) ]]; then
+    command find -regextype posix-extended "$@"
+  else
+    command find "$1" -regextype posix-extended "${@:2}"
+  fi
+}
+
 # -- color
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
