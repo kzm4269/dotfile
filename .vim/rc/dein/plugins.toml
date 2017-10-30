@@ -19,7 +19,7 @@ if !has('nvim')
 
   nnoremap <silent> [Unite]u :<C-u>Unite -no-split<Space>
   nnoremap <silent> [Unite]b :<C-u>Unite buffer<CR>
-  nnoremap <silent> [Unite]f :<C-u>Unite file_rec<CR>
+  nnoremap <silent> [Unite]f :<C-u>Unite file<CR>
   nnoremap <silent> [Unite]m :<C-u>Unite file_mru<CR>
   nnoremap <silent> [Unite]g :<C-u>Unite grep<CR>
 endif
@@ -131,6 +131,7 @@ let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
 
 let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#whitespace#checks = []
 
 let g:airline_theme = 'wombat'
 let g:airline_mode_map = {
@@ -150,6 +151,7 @@ let g:airline_mode_map = {
 let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
 let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
 let g:airline_section_z = '%#__accent_bold#%4l/%L%#__restore__# %3v:%04B'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#whitespace#check(),0)}'
 '''
 
 
@@ -334,6 +336,7 @@ let g:EasyMotion_startofline = 0
 
 [[plugins]]
 repo = 'haya14busa/incsearch.vim'
+if = '''!has('nvim')'''
 lazy = 1
 on_map = [
   '<Plug>(incsearch-forward)',
@@ -348,6 +351,7 @@ map g/ <Plug>(incsearch-stay)
 
 [[plugins]]
 repo = 'haya14busa/incsearch-fuzzy.vim'
+depends = 'incsearch.vim'
 lazy = 1
 on_func = 'incsearch#config#fuzzy#converter'
 hook_add = '''
@@ -364,6 +368,7 @@ noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
 
 [[plugins]]
 repo = 'haya14busa/incsearch-easymotion.vim'
+depends = 'incsearch.vim'
 lazy = 1
 on_func = 'incsearch#config#easymotion#module'
 hook_add = '''
