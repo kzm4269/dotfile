@@ -1,3 +1,3 @@
 #!/bin/bash
 [ $# -eq 0 ] && set -- conda
-"$@" update -y --all && "$@" upgrade -y python && "$@" upgrade -y --all
+"$@" update -y conda && "$@" update -y python && "$@" update -y --all

@@ -1,4 +1,4 @@
 #!/bin/bash
 [ $# -eq 0 ] && set -- pip
 "$@" install -U pip
-"$@" list --format=columns | tail -n +3 | awk '{print $1}' | xargs -I{} "$@" install -U {}
+"$@" freeze | sed 's/==.*$//' | grep -v conda | xargs -I{} "$@" install -U {}
