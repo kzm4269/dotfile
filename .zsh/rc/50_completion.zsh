@@ -46,4 +46,3 @@ zstyle ':completion:*:messages' format '%F{yellow}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}No matches for:%f%F{yellow} %d%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}completing %B%d%b%f'
 zstyle ':completion:*:corrections' format '%F{yellow}%B%d%b%f%F{red}%B (%e)%b%f'
-

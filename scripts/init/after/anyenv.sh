@@ -20,4 +20,3 @@ eval "$("$anyenv" init -)"
 # pyenv-which-ext
 [ -d "$pyenv_home/plugins/pyenv-virtualenv" ] ||
   git clone https://github.com/pyenv/pyenv-which-ext "$pyenv_home/plugins/"
-

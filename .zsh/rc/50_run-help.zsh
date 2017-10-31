@@ -12,4 +12,3 @@ export HELPDIR="$HOME/.zsh_help"
 function install-zsh-help() { 
   "$@" >& "$HELPDIR/${1:t}"
 }
-

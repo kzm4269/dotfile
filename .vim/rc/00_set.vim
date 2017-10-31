@@ -137,4 +137,3 @@ if exists('v:version')
     filetype plugin on
   endif
 endif
-

@@ -24,4 +24,3 @@ all: update deploy init
 
 clean:
 	@-$(foreach d, $(DOTFILES), rm -vrf $(HOME)/$(d);)
-

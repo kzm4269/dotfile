@@ -20,4 +20,3 @@ sudo apt-get install -y unar
 sudo apt-get install -y vim-gnome
 sudo apt-get install -y xsel
 sudo apt-get install -y zsh
-
