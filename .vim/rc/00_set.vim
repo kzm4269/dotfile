@@ -88,6 +88,11 @@ set vb t_vb=
 set noerrorbells
 set novisualbell
 
+" file format and encoding
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileformats=unix,dos,mac
+
 " buffer
 set hidden
 if exists('&switchbuf')
