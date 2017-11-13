@@ -8,7 +8,7 @@ conky.config = {
   -- own_window
   own_window = true,
   own_window_class = 'Conky',
-  own_window_type = 'desktop',
+  own_window_type = 'override',
   own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
   own_window_transparent = false,
   own_window_colour = '#ffffff',
@@ -41,8 +41,8 @@ conky.config = {
 };
 
 conky.text = [[
-${color0}${font Ricty:size=24}${time %Y/%m/%d %a}
-${alignr}${time %H:%M:%S}${font}
+${color0}${alignr}${font Ricty:size=24}${time %Y-%m-%d %a}
+${alignr}${time %H:%M:%S %Z}${font}
 ${hr}
 Uptime ${alignr}${uptime}
 ${hr}
