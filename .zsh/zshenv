@@ -13,7 +13,6 @@ path=($HOME/local/bin(N-/) $HOME/.local/bin(N-) $HOME/.bin(N-/) $path)
 fpath=($HOME/local/etc/zsh/functions(N-/) $HOME/.zsh/functions(N-/) $fpath)
 
 # -- LANG
-unset LANG LANGUAGE $(env | sed 's/=.*//' | grep -e '^LC_')
 export LANG="en_US.UTF-8"
 
 # -- EDITOR
@@ -24,7 +23,7 @@ export GIT_EDITOR="$EDITOR"
 
 # -- PAGER
 export PAGER=less
-export LESS='-R -f -i -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
+export LESS='-f -i -R -P ?f%f:(stdin). ?lb%lb?L/%L.. [?eEOF:?pb%pb\%..]'
 export LESSCHARSET='utf-8'
 
 # -- WORDCHARS
