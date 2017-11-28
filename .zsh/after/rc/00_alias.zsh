@@ -1,3 +1,5 @@
+_alias() { echo alias $(alias $1 || echo "'$1=$1'")"'${2:gs/\'/"'\\''"/}'"; }
+
 # -- basic
 alias sudo='sudo '
 
@@ -30,8 +32,8 @@ has 'colordiff' &&
   alias diff='diff -u'
 
 case "$OSTYPE" in
-  freebsd*|darwin*) alias ls='ls -G -w';;
-  linux*) alias ls='ls --color=auto';;
+  freebsd*|darwin*) eval $(_alias ls ' -G -w');;
+  linux*) eval $(_alias ls ' --color=auto');;
 esac
 
 # -- zmv
@@ -39,14 +41,7 @@ autoload -Uz zmv
 alias zmvw='noglob zmv -W'
 
 # -- single character
-alias G='grep'
-alias L='less'
-alias S='sort'
-alias T='tail'
-alias H='head'
 alias X='xargs -I{}'
-
-has fzf && alias F='fzf'
 
 case "$OSTYPE" in
   freebsd*|darwin*) alias O='open';;
