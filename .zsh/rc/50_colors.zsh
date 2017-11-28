@@ -1,7 +1,7 @@
 # ls
 eval `dircolors -b ~/.dir_colors`
-export ZLS_COLORS=$LS_COLORS
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+export ZLS_COLORS="$LS_COLORS"
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 # man
 export LESS_TERMCAP_mb=$'\e[01;31m'
