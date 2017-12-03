@@ -1,6 +1,8 @@
 [user]
 	name = kzm4269
 	email = 4269kzm@gmail.com
+[core]
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [pull]
