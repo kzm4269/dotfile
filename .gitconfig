@@ -25,8 +25,17 @@
 	commits = !git --no-pager history
 	submodules = submodule
 	# log
-	history = log --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset' --abbrev-commit --date=relative
-	graph = log --graph --date-order --pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)- %an%Creset%C(bold yellow)%d%Creset' --abbrev-commit --date=relative --branches --remotes --tags
+	history = \
+		log --branches --remotes --tags --date-order --abbrev-commit --date=relative \
+		--pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)%an%Creset%C(bold yellow)%d%Creset'
+	graph = \
+		log --branches --remotes --tags --date-order --abbrev-commit --date=relative \
+		--pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)%an%Creset%C(bold yellow)%d%Creset' \
+		--graph
+	graphns = \
+		log --branches --remotes --tags --date-order --abbrev-commit --date=relative \
+		--pretty=format:'%C(yellow)%h%Creset %C(green)(%cd)%Creset %s %C(dim white)%an%Creset%C(bold yellow)%d%Creset%n' \
+		--graph --name-status
 	# check
 	pre-add = diff
 	pre-commit = diff --cached
