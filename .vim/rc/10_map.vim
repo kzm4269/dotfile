@@ -10,6 +10,8 @@ noremap <Space>l $
 
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 nnoremap n nzz
 nnoremap N Nzz
