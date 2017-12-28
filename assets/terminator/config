@@ -40,7 +40,7 @@
     background_darkness = 0.86
     background_image = None
     cursor_color = "#ffffff"
-    font = Ricty Discord for Powerline 10
+    font = Ricty Discord 10
     foreground_color = "#fffaf4"
     icon_bell = False
     palette = "#232323:#ff000f:#8ce10b:#ffb900:#008df8:#903fff:#00d8eb:#ffffff:#444444:#ff2740:#abe15b:#ffd242:#0092ff:#9a5feb:#67fff0:#ffffff"

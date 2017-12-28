@@ -266,7 +266,7 @@ endfunction
 # snippets
 
 [[plugins]]
-repo = 'Shougo/neosnippet.vim'
+repo = 'Shougo/neosnippet'
 depends = ['vim-snippets', 'neosnippet-snippets']
 lazy = 1
 on_i = 1
@@ -281,8 +281,8 @@ let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory = [
       \ g:vim_root . '/snippets',
-      \ g:dein_root . '/repos/github.com/neosnippet-snippets/neosnippets',
-      \ g:dein_root . '/repos/github.com/vim-snippets/snippets',
+      \ g:dein_root . '/repos/github.com/Shougo/neosnippet-snippets/neosnippets',
+      \ g:dein_root . '/repos/github.com/honza/vim-snippets/snippets',
       \ ]
 '''
 
