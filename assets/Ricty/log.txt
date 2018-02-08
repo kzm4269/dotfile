@@ -1,1 +1,0 @@
-ricty_generator.sh -a -d 07DZz auto

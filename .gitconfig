@@ -1,8 +1,9 @@
 [user]
-	name = kzm4269
+	name = Kazuma Takahara
 	email = 4269kzm@gmail.com
 [core]
 	excludesfile = ~/.gitignore
+	autocrlf = false
 [push]
 	default = nothing
 [pull]
