@@ -1,0 +1,17 @@
+.rendered_html code {
+  background-color: #F7F7F7;
+  color: #4A4A4A;
+  padding: 2px 4px;
+}
+.output_area {
+  margin-top: 0.3em;
+}
+.output_subarea.output_result {
+  border: solid 1px #DFDFDF;
+}
+.output_subarea.output_stdout {
+  border: solid 1px #DFDFDF;
+}
+.toolbar-btn-label {
+  display: none;
+}
