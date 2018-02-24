@@ -38,7 +38,7 @@ esac
 
 # -- zmv
 autoload -Uz zmv
-alias zmvw='noglob zmv -W'
+alias mmv='noglob zmv -W'
 
 # -- single character
 alias X='xargs -I{}'
