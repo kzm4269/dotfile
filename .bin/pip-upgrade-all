@@ -2,3 +2,4 @@
 [ $# -eq 0 ] && set -- pip
 "$@" install -U pip
 "$@" freeze | sed 's/==.*$//' | grep -v conda | xargs -I{} "$@" install -U {}
+"$@" check | perl -nE 'say $1 if / (\S+), /' | xargs -I{} "$@" install {}
