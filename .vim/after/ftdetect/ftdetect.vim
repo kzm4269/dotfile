@@ -7,4 +7,5 @@ augroup MyAutoCmd
   autocmd BufNewFile,BufRead *.scl set filetype=vhdl
   autocmd BufNewFile,BufRead *.conkyrc set filetype=conkyrc
   autocmd BufNewFile,BufRead conky.conf set filetype=conkyrc
+  autocmd BufNewFile,BufRead *.tmux.conf set filetype=tmux
 augroup END
