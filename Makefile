@@ -20,7 +20,6 @@ init:
 	@DOTPATH=$(DOTPATH) bash $(DOTPATH)/scripts/do.sh $(DOTPATH)/scripts/init
 
 all: update deploy init
-	@exec $$SHELL
 
 clean:
 	@-$(foreach d, $(DOTFILES), rm -vrf $(HOME)/$(d);)

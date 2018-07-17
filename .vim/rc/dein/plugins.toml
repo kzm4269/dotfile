@@ -166,12 +166,7 @@ repo = 'scrooloose/nerdcommenter'
 repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
-repo = 'vim-scripts/Align'
-lazy = 1
-on_cmd = 'Align'
-hook_source = '''
-let g:Align_xstrlen = 3
-'''
+repo = 'junegunn/vim-easy-align'
 
 
 # completion

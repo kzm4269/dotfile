@@ -8,4 +8,5 @@ augroup MyAutoCmd
   autocmd BufNewFile,BufRead *.conkyrc set filetype=conkyrc
   autocmd BufNewFile,BufRead conky.conf set filetype=conkyrc
   autocmd BufNewFile,BufRead *.jinja2,*.j2,*.jinja set filetype=html
+  autocmd BufNewFile,BufRead *.tmux.conf set filetype=tmux
 augroup END

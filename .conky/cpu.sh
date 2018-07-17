@@ -1,4 +1,6 @@
 #/bin/bash
-for i in $(seq 1 $(grep -c processor /proc/cpuinfo)); do
-  echo '${cpubar cpu'$i' 6,200}${alignr}${cpu cpu'$i'}%'
+set -eu
+n=$(grep -c processor /proc/cpuinfo)
+for i in $(seq 1 $n); do
+  echo $(printf "%${#n}d\t" $i)'${cpubar cpu'$i' 6,200}${alignr}${cpu cpu'$i'}%'
 done
