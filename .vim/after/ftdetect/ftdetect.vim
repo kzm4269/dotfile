@@ -7,4 +7,5 @@ augroup MyAutoCmd
   autocmd BufNewFile,BufRead *.scl set filetype=vhdl
   autocmd BufNewFile,BufRead *.conkyrc set filetype=conkyrc
   autocmd BufNewFile,BufRead conky.conf set filetype=conkyrc
+  autocmd BufNewFile,BufRead *.jinja2,*.j2,*.jinja set filetype=html
 augroup END
