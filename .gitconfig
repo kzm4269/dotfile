@@ -3,7 +3,7 @@
 	email = 4269kzm@gmail.com
 [core]
 	excludesfile = ~/.gitignore
-	autocrlf = false
+	autocrlf = input
 [push]
 	default = nothing
 [pull]
