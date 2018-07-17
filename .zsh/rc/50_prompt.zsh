@@ -10,7 +10,7 @@ function precmd() {
 
 function __prompt() {
   autoload -Uz vcs_info
-  zstyle ':vcs_info:*' formats '%b'
+  zstyle ':vcs_info:*' formats '%b%c%u'
   zstyle ':vcs_info:*' actionformats '%b|%a'
   vcs_info
   
@@ -21,4 +21,22 @@ function __prompt() {
   echo '%n%(?.$.%F{red}$%f) '
 }
 
+function __rprompt() {
+  local py
+  has pyenv && [[ $(pyenv version-name) != system ]] && py="$(pyenv version-name)"
+  [[ -n $VIRTUAL_ENV ]] && py="$(basename "${VIRTUAL_ENV%%/.venv}")"
+  [[ -n $py ]] && py="Py:%F{green}$py%f"
+  
+  local rb
+  has rbenv && [[ $(rbenv version-name) != system ]] && rb="$(rbenv version-name)"
+  [[ -n $rb ]] && rb="Rb:%F{green}$rb%f"
+  
+  local env
+  env=($py $rb)
+  
+  echo "${(j: :)env}"
+}
+
 PROMPT='$(__prompt)'
+RPROMPT='$(__rprompt)'
+export VIRTUAL_ENV_DISABLE_PROMPT=1

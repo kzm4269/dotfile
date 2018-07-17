@@ -13,7 +13,9 @@ path=($HOME/local/bin(N-/) $HOME/.local/bin(N-) $HOME/.bin(N-/) $path)
 fpath=($HOME/local/etc/zsh/functions(N-/) $HOME/.zsh/functions(N-/) $fpath)
 
 # -- LANG
-export LANG="en_US.UTF-8"
+export LANG='en_US.UTF-8'
+export LANGUAGE=
+eval $(env -0 | tr '\r\n' ' ' | sed 's/\x0/\n/g' | sed 's/=.*//' | grep '^LC_' | sed 's/.*/unset \0/')
 
 # -- EDITOR
 export EDITOR=vim
