@@ -1,5 +1,5 @@
 #!/bin/bash
-repos=(~/.fzf ~/.direnv ~/.anyenv ~/.anyenv/envs/pyenv ~/.zplug)
+repos=(~/.fzf ~/.anyenv ~/.anyenv/envs/pyenv ~/.zplug)
 for repo in "${repos[@]}"; do
   if [ -d "$repo" ]; then
     echo "update: $repo"
@@ -9,4 +9,8 @@ done
 
 if [ -d ~/.fzf ]; then
   ~/.fzf/install --key-bindings --completion --no-update-rc
+fi
+
+if [ -d ~/.direnv ]; then
+  bash "$DOTPATH/scripts/init/after/direnv.sh"
 fi
