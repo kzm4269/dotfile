@@ -22,6 +22,9 @@ function __prompt() {
 }
 
 function __rprompt() {
+  local dir
+  [[ -n ${DIRENV_DIR:-} ]] && dir="[%F{green}${DIRENV_DIR#-}%f]"
+  
   local py
   has pyenv && [[ $(pyenv version-name) != system ]] && py="$(pyenv version-name)"
   [[ -n $VIRTUAL_ENV ]] && py="$(basename "${VIRTUAL_ENV%%/.venv}")"
@@ -32,7 +35,7 @@ function __rprompt() {
   [[ -n $rb ]] && rb="Rb:%F{green}$rb%f"
   
   local env
-  env=($py $rb)
+  env=($py $rb $dir)
   
   echo "${(j: :)env}"
 }
