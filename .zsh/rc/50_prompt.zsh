@@ -23,16 +23,16 @@ function __prompt() {
 
 function __rprompt() {
   local dir
-  [[ -n ${DIRENV_DIR:-} ]] && dir="[%F{green}${DIRENV_DIR#-}%f]"
+  [[ -n ${DIRENV_DIR:-} ]] && dir="[%F{yellow}${DIRENV_DIR#-}%f]"
   
   local py
   has pyenv && [[ $(pyenv version-name) != system ]] && py="$(pyenv version-name)"
   [[ -n $VIRTUAL_ENV ]] && py="$(basename "${VIRTUAL_ENV%%/.venv}")"
-  [[ -n $py ]] && py="Py:%F{green}$py%f"
+  [[ -n $py ]] && py="py:%F{green}$py%f"
   
   local rb
   has rbenv && [[ $(rbenv version-name) != system ]] && rb="$(rbenv version-name)"
-  [[ -n $rb ]] && rb="Rb:%F{green}$rb%f"
+  [[ -n $rb ]] && rb="rb:%F{green}$rb%f"
   
   local env
   env=($py $rb $dir)
