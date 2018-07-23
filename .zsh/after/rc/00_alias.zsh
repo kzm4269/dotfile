@@ -47,3 +47,13 @@ case "$OSTYPE" in
   freebsd*|darwin*) alias O='open';;
   linux*) alias O='xdg-open';;
 esac
+
+# -- auto ls
+function __chpwd_auto_ls() { 
+  if has tput && (( $(ls --format=horizontal | wc -l) < $(tput lines) - 3 )); then
+    ls
+  else
+    echo "... $(ls | wc -l) files ..." 
+  fi
+}
+chpwd_functions=($chpwd_functions __chpwd_auto_ls)

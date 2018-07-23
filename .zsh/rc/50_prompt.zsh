@@ -1,13 +1,5 @@
 setopt prompt_subst
 
-function precmd() {
-  case "$TERM" in
-    xterm*|kterm*)
-      echo -ne "\e]0;${USER}@${HOST%%.*} : ${PWD}\007"
-      ;;
-  esac
-}
-
 function __prompt() {
   autoload -Uz vcs_info
   zstyle ':vcs_info:*' formats '%b%c%u'
@@ -21,9 +13,14 @@ function __prompt() {
   echo '%n%(?.$.%F{red}$%f) '
 }
 
+function __dirname() {
+  chpwd_functions=()
+  builtin cd "$@" && print -P %~
+}
+
 function __rprompt() {
   local dir
-  [[ -n ${DIRENV_DIR:-} ]] && dir="[%F{yellow}${DIRENV_DIR#-}%f]"
+  [[ -n ${DIRENV_DIR:-} ]] && dir="[%F{yellow}$(__dirname ${DIRENV_DIR#-})%f]"
   
   local py
   has pyenv && [[ $(pyenv version-name) != system ]] && py="$(pyenv version-name)"

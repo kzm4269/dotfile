@@ -13,6 +13,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[01;32m'
 
 # zsh-syntax-highlight
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 typeset -g -A ZSH_HIGHLIGHT_STYLES
 function () {
   local c_error="fg=red,bold"
