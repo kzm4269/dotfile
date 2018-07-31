@@ -7,6 +7,9 @@ case "$(uname -sm)" in
   'Linux armv7l')
     suffix='linux-arm'
     ;;
+  'Linux x86_64')
+    suffix='linux-amd64'
+    ;;
   *) 
     echo 'unknown machine: '$(uname -sm) >&2
     exit 1
