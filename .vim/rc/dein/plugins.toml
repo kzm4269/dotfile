@@ -88,6 +88,12 @@ repo = 'Vimjas/vim-python-pep8-indent'
 lazy = 1
 on_ft = 'python'
 
+[[plugins]]
+repo = 'lervag/vimtex'
+lazy = 1
+on_ft = 'tex'
+
+
 # display
 
 [[plugins]]

@@ -13,5 +13,5 @@ setopt hist_reduce_blanks
 setopt hist_save_no_dups
 setopt hist_verify
 setopt inc_append_history
-setopt share_history
 setopt interactive_comments
+setopt share_history

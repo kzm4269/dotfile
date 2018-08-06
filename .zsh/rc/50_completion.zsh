@@ -46,3 +46,20 @@ zstyle ':completion:*:messages' format '%F{yellow}%d%f'
 zstyle ':completion:*:warnings' format '%F{red}No matches for:%f%F{yellow} %d%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}completing %B%d%b%f'
 zstyle ':completion:*:corrections' format '%F{yellow}%B%d%b%f%F{red}%B (%e)%b%f'
+
+
+# functions
+
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+    COMP_CWORD=$(( cword-1 )) \
+    PIP_AUTO_COMPLETE=1 $words[1] ) )
+}
+compctl -K _pip_completion pip
+
+
+[ -s ~/.gibo/gibo-completion.zsh ] &&
+  source ~/.gibo/gibo-completion.zsh

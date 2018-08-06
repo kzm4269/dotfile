@@ -32,8 +32,10 @@ has 'colordiff' &&
   alias diff='diff -u'
 
 case "$OSTYPE" in
-  freebsd*|darwin*) eval $(_alias ls ' -G -w');;
-  linux*) eval $(_alias ls ' --color=auto');;
+  freebsd*|darwin*)
+    eval $(_alias ls ' -G -w');;
+  linux*)
+    eval $(_alias ls ' --color=auto');;
 esac
 
 # -- zmv
@@ -44,8 +46,10 @@ alias mmv='noglob zmv -W'
 alias X='xargs -I{}'
 
 case "$OSTYPE" in
-  freebsd*|darwin*) alias O='open';;
-  linux*) alias O='xdg-open';;
+  freebsd*|darwin*)
+    alias O='open';;
+  linux*)
+    alias O='xdg-open';;
 esac
 
 # -- auto ls

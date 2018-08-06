@@ -19,13 +19,12 @@ for s in "$HOME/.zsh/rc"/*.zsh(N); do source "$s"; done
 for s in "$HOME/local/etc/zsh/rc"/*.zsh(N); do source "$s"; done
 
 # -- zplug load
-if [ -f "$HOME/.zplug/init.zsh" ]; then
+if [[ -f "$HOME/.zplug/init.zsh" ]]; then
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zsh"
   source "$HOME/.zplug/init.zsh"
 
   if ! zplug check --verbose; then
-    printf 'Install? [Y/n]'
-    read; [[ "$REPLY" =~ ^([yY]|)$ ]] && zplug install
+    confirm 'Install?' Y && zplug install
   fi
 
   zplug load

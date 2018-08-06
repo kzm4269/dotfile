@@ -11,3 +11,5 @@ fi
 if pyenv virtualenv-init &>/dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
+
+export PIPENV_VENV_IN_PROJECT=1

@@ -39,4 +39,5 @@ function __rprompt() {
 
 PROMPT='$(__prompt)'
 RPROMPT='$(__rprompt)'
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1

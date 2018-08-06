@@ -47,7 +47,7 @@ alias_pop() {
 
 # etc
 
-ask() {
+confirm() {
   # http://djm.me/ask
   local prompt default REPLY
 

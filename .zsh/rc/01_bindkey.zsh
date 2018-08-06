@@ -1,4 +1,3 @@
-# emacs like
 bindkey -e
 
 bindkey "\e[1~" beginning-of-line  # Home
@@ -10,9 +9,6 @@ bindkey -M menuselect '^h' vi-backward-char
 bindkey -M menuselect '^j' vi-down-line-or-history
 bindkey -M menuselect '^k' vi-up-line-or-history
 bindkey -M menuselect '^l' vi-forward-char
-
-bindkey '^[u' undo
-bindkey '^[r' redo
 
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
