@@ -93,6 +93,21 @@ repo = 'lervag/vimtex'
 lazy = 1
 on_ft = 'tex'
 
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+lazy = 1
+on_ft = 'pug'
+
+[[plugins]]
+repo = 'vim-scripts/vim-stylus'
+lazy = 1
+on_ft = 'stylus'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+lazy = 1
+on_ft = 'vue'
+
 
 # display
 
@@ -118,6 +133,7 @@ lazy = 1
 repo = 'Yggdroot/indentLine'
 hook_add = '''
 let g:indentLine_showFirstIndentLevel = -1
+let g:indentLine_conceallevel = 0
 '''
 
 [[plugins]]
@@ -386,4 +402,3 @@ endfunction
 
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 '''
-

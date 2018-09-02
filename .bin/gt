@@ -1,0 +1,62 @@
+#!/usr/bin/python
+from __future__ import print_function
+
+import sys
+import re
+import argparse
+from contextlib import contextmanager
+
+from googletrans import Translator
+
+def translate(text, src='en', dest='ja'):
+    comment_pattern = re.compile(r'//([^\n]*)')
+    out = re.sub(comment_pattern, r'\1', text)
+
+    out = re.sub(r'^\s*|\s*(?=\s)|\s*$', '', out)
+    out = re.sub(r'[\r\n]', ' ', out)
+    out = re.sub(r':\s+', r':\n', out)
+    out = re.sub(r'\.\s+([A-Z])', r'.\n\1', out)
+
+    out = ' '.join(
+        '\n' + line if ' ' in line else line
+        for line in out.splitlines())
+    out = '\n'.join(
+        re.sub(r' ([A-Z]\w+)', r' _\1_', line)
+        for line in out.splitlines())
+
+    for t in Translator().translate(out.strip().splitlines(), src=src, dest=dest):
+        yield t.origin, t.text
+
+
+@contextmanager
+def _open(arg):
+    if arg == '-':
+        yield sys.stdin
+    else:
+        with open(arg) as fp:
+            yield fp
+
+def _main():
+    p = argparse.ArgumentParser()
+    p.add_argument('files', nargs='*')
+    p.add_argument('-s', '--src', default='en')
+    p.add_argument('-d', '--dest', default='ja')
+    p.add_argument('-S', '--simple', action='store_true')
+    args = p.parse_args()
+    
+    for arg in args.files or ['-']:
+        with _open(arg) as fp:
+            for origin, text in translate(fp.read(), src=args.src, dest=args.dest):
+                if args.simple:
+                    print(text)
+                else:
+                    print('[{}]'.format(args.src), origin)
+                    print('[{}]'.format(args.dest), text)
+                    print()
+
+
+if __name__ == '__main__':
+    try:
+        _main()
+    except KeyboardInterrupt:
+        pass

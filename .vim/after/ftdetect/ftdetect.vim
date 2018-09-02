@@ -10,4 +10,6 @@ augroup MyAutoCmd
   autocmd BufNewFile,BufRead *.jinja2,*.j2,*.jinja set filetype=html
   autocmd BufNewFile,BufRead *.tmux.conf set filetype=tmux
   autocmd BufNewFile,BufRead *.envrc set filetype=sh
+  autocmd BufNewFile,BufRead *.styl,*.stylus set filetype=stylus
+  autocmd BufNewFile,BufRead *.pug set filetype=pug
 augroup END
