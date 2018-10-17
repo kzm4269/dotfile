@@ -1,0 +1,9 @@
+#!/usr/bin/python
+from __future__ import print_function
+import json
+import sys
+
+import toml
+
+for arg in sys.argv[1:] or ['-']:
+    json.dump(toml.load(open(arg) if arg != '-' else sys.stdin), sys.stdout)
