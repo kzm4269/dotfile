@@ -4,8 +4,6 @@
 [core]
 	excludesfile = ~/.gitignore
 	autocrlf = input
-[push]
-	default = nothing
 [pull]
 	ff = only
 [merge]
