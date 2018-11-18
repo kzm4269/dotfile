@@ -36,6 +36,9 @@ conky.config = {
   -- font
   use_xft = true,
   font = 'Ricty:style=Regular:size=11',
+  
+  -- lua
+  lua_load = '~/.conky/scripts/util.lua',
 };
 
 conky.text = [[
@@ -45,7 +48,7 @@ ${hr}
 Uptime ${alignr}${uptime}
 ${hr}
 CPU ${alignr}Processes: ${processes}
-${execp ~/.conky/cpu.sh}
+${execpi 600 ~/.conky/cpu.sh}
 - ${top name 1}${alignr}${top cpu 1}%
 - ${top name 2}${alignr}${top cpu 2}%
 - ${top name 3}${alignr}${top cpu 3}%
@@ -56,10 +59,13 @@ ${membar 6,200}${alignr}${memperc}%
 - ${top_mem name 2}${alignr}${top_mem mem 2}%
 - ${top_mem name 3}${alignr}${top_mem mem 3}%
 ${hr}
-${execp ~/.conky/fs.sh}
+GPU
+${execpi 600 ~/.conky/gpu.sh}
 ${hr}
-${execp ~/.conky/diskio.sh}
+${execpi 10 ~/.conky/fs.sh}
 ${hr}
-${execp ~/.conky/network.sh}
+${execpi 10 ~/.conky/diskio.sh}
+${hr}
+${execpi 10 ~/.conky/network.sh}
 ${hr}
 ]];
