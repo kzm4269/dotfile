@@ -16,7 +16,7 @@
     "execute_time/ExecuteTime": true,
     "freeze/main": true,
     "navigation-hotkeys/main": false,
-    "notify/notify": true,
+    "notify/notify": false,
     "ruler/main": true,
     "toc2/main": true,
     "varInspector/main": true,
@@ -38,7 +38,8 @@
     "hinterland/hinterland": false,
     "exercise2/main": false,
     "splitcell/splitcell": false,
-    "comment-uncomment/main": true
+    "comment-uncomment/main": true,
+    "code_prettify/isort": false
   },
   "ExecuteTime": {
     "highlight": {
