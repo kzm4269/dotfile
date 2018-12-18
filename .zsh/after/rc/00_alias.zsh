@@ -14,7 +14,7 @@ alias su='su -l'
 
 alias jobs='jobs -l'
 
-function find=() {
+function find() {
   if [[ ${1:-} =~ ^(-[^A-Z]|[!\(\)]$) ]]; then
     command find -regextype posix-extended "$@"
   else
