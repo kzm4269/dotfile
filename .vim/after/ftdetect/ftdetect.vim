@@ -12,4 +12,5 @@ augroup MyAutoCmd
   autocmd BufNewFile,BufRead *.envrc set filetype=sh
   autocmd BufNewFile,BufRead *.styl,*.stylus set filetype=stylus
   autocmd BufNewFile,BufRead *.pug set filetype=pug
+  autocmd BufNewFile,BufRead *.launch,*.urdf,*.xacro set filetype=xml
 augroup END
