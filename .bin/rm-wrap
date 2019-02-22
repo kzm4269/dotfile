@@ -1,0 +1,48 @@
+#!/usr/bin/python
+from __future__ import print_function
+
+import sys
+import re
+from contextlib import contextmanager
+
+
+def remove_wrap(text):
+    comment_pattern = re.compile(r'//([^\n]*)')
+    out = re.sub(comment_pattern, r'\1', text)
+
+    out = re.sub(r'^\s*|\s*(?=\s)|\s*$', '', out)
+    out = re.sub(r'[\r\n]', ' ', out)
+    out = re.sub(r':\s+', r':\n', out)
+    out = re.sub(r'\.\s+([A-Z])', r'.\n\1', out)
+
+    out = ' '.join(
+        '\n' + line if ' ' in line else line
+        for line in out.splitlines())
+    out = '\n'.join(
+        re.sub(r' ([A-Z]\w+)', r' _\1_', line)
+        for line in out.splitlines())
+
+    return out.strip().splitlines()
+
+
+@contextmanager
+def _open(arg):
+    if arg == '-':
+        yield sys.stdin
+    else:
+        with open(arg) as fp:
+            yield fp
+
+
+def _main():
+    for arg in sys.argv[1:] or ['-']:
+        with _open(arg) as fp:
+            for line in remove_wrap(fp.read()):
+                print(line)
+
+
+if __name__ == '__main__':
+    try:
+        _main()
+    except KeyboardInterrupt:
+        pass

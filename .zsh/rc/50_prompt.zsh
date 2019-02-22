@@ -24,7 +24,7 @@ function __rprompt() {
   
   local py
   has pyenv && [[ $(pyenv version-name) != system ]] && py="$(pyenv version-name)"
-  [[ -n $VIRTUAL_ENV ]] && py="${${${VIRTUAL_ENV%%/.venv}##*/}%-*}"
+  [[ -n $VIRTUAL_ENV ]] && py="${${VIRTUAL_ENV%%/.venv}##*/}"
   [[ -n $py ]] && py="py:%F{green}$py%f"
   
   local rb

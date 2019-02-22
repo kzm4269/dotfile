@@ -5,6 +5,7 @@
     ],
     "nbserver_extensions": {
       "jupyter_nbextensions_configurator": true
-    }
+    },
+    "password": "sha1:a4afb4e184ea:e7c73c5611b15d7f5adf49214e708e8955214fbf"
   }
 }
