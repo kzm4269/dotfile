@@ -1,4 +1,6 @@
 #!/bin/bash
+has() { type $1 &>/dev/null; }
+
 if has apt; then
   apt=apt
 elif has aptitude; then
