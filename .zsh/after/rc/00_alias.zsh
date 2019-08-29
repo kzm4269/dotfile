@@ -61,3 +61,8 @@ function __chpwd_auto_ls() {
   fi
 }
 chpwd_functions=($chpwd_functions __chpwd_auto_ls)
+
+# -- vim
+if has nvim; then
+  alias vim=nvim
+fi
