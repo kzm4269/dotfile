@@ -208,10 +208,10 @@ c.NotebookApp.open_browser = False
 #    from notebook.auth import passwd; passwd()
 #  
 #  The string should be of the form type:salt:hashed-password.
-c.NotebookApp.password = $PASSWORD
+c.NotebookApp.password = 'sha1:ff9d33dede1c:89364ba6a725a3d1ab801b3648629d0643658746'
 
 ## The port the notebook server will listen on.
-c.NotebookApp.port = $PORT
+# c.NotebookApp.port = 
 
 ## The number of additional ports to try if the specified port is not available.
 #c.NotebookApp.port_retries = 50
