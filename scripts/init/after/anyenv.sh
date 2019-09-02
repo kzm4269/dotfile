@@ -8,6 +8,7 @@ pyenv_home="$anyenv_home/envs/pyenv"
 if [[ ! -d "$anyenv_home" ]]; then
   git clone https://github.com/riywo/anyenv "$anyenv_home"
 fi
+echo y | "$anyenv" install --init
 eval "$("$anyenv" init -)"
 
 # pyenv
