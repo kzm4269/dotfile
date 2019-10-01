@@ -2,14 +2,27 @@ setopt prompt_subst
 
 function __prompt() {
   autoload -Uz vcs_info
-  zstyle ':vcs_info:*' formats '%b%c%u'
+  zstyle ':vcs_info:*' formats '%R'$'\n''%b%c%u'
   zstyle ':vcs_info:*' actionformats '%b|%a'
   vcs_info
   
   local vcs
-  [ -n "$vcs_info_msg_0_" ] && vcs=":%F{green}$vcs_info_msg_0_%f"
+  if [[ -n "$vcs_info_msg_0_" ]]; then
+    vcs=("${(@f)vcs_info_msg_0_}")
+    vcs_root="${vcs[1]/#$HOME/~}"
+    vcs_info="${vcs[2]}"
+    
+    if [[ $PWD =~ ^${vcs[1]} ]]; then
+      vcs_root_to_pwd="${${PWD/#${vcs[1]}/}#/}"
+      vcs="%F{yellow}$vcs_root%B/%b$vcs_root_to_pwd%f:%F{green}$vcs_info%f"
+    else
+      vcs="%F{yellow}%~%f:%F{green}$vcs_info%f@%F{green}$vcs_root%f"
+    fi
+  else
+    vcs="%F{yellow}%~%f"
+  fi
   
-  echo "[%m:%F{yellow}%~%f$vcs]"
+  echo "[%m:$vcs]"
   echo '%n%(?.$.%F{red}$%f) '
 }
 

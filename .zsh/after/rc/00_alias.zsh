@@ -8,6 +8,11 @@ alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
 
+case "$OSTYPE" in
+  linux*)
+    eval $(_alias ls ' --time-style="+%Y-%m-%d %H:%M:%S"');;
+esac
+
 alias du='du -h'
 alias df='df -h'
 alias su='su -l'
