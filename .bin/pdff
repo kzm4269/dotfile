@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+import sys
+from io import BytesIO, UnsupportedOperation
+from pathlib import Path
+
+import click
+import PyPDF2
+
+
+@click.command()
+@click.argument('src', type=click.File('rb'), default=None)
+@click.option('--page-slice', '-p')
+@click.option('--rotate-cw', '-r', type=int, default=0)
+def _main(src, page_slice, rotate_cw):
+    if src is None:
+        src = sys.stdin.buffer
+    try:
+        src.seek(0)
+    except UnsupportedOperation:
+        src = BytesIO(src.read())
+        
+    if not page_slice:
+        page_slice = slice(None, None)
+    else:
+        page_slice = [int(i) if i else None for i in map(str.strip, page_slice.split(':'))]
+        if len(page_slice) >= 2:
+            page_slice = slice(*page_slice)
+        else:
+            p = page_slice[0]
+            page_slice = slice(p, p + 1 or None)
+        
+    with src: 
+        reader = PyPDF2.PdfFileReader(src)
+        writer = PyPDF2.PdfFileWriter()
+        for page in reader.pages[page_slice]:
+            page.rotateClockwise(rotate_cw)
+            writer.addPage(page)
+        with BytesIO() as f:
+            writer.write(f)
+            sys.stdout.buffer.write(f.getbuffer())
+
+
+if __name__ == '__main__':
+    _main()

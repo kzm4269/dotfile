@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import sys
+from contextlib import ExitStack
+from io import BytesIO, UnsupportedOperation
+from pathlib import Path
+
+import click
+import PyPDF2
+
+
+@click.command()
+@click.argument('src', type=click.File('rb'), nargs=-1)
+def _main(src):
+    merger = PyPDF2.PdfFileMerger()
+    with ExitStack() as stack:
+        for s in src:
+            try:
+                s.seek(0)
+            except UnsupportedOperation:
+                s = stack.enter_context(BytesIO(s.read()))
+            merger.append(s)
+        with BytesIO() as f:
+            merger.write(f)
+            sys.stdout.buffer.write(f.getbuffer())
+            
+
+if __name__ == '__main__':
+    _main()
