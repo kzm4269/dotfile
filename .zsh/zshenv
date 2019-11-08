@@ -36,5 +36,8 @@ export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 path=($GOBIN $path)
 
+# -- RUST
+path=($HOME/.cargo/bin $path)
+
 # -- local
 [ -s "$HOME/local/etc/zsh/zshenv" ] && source "$HOME/local/etc/zsh/zshenv"
