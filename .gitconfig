@@ -12,6 +12,8 @@
 	tool = vimdiff
 [difftool]
 	prompt = false
+[credential]
+	helper = store
 [alias]
 	# abbreviation
 	co = checkout
