@@ -3,7 +3,7 @@ _alias() { echo alias $(alias $1 || echo "'$1=$1'")"'${2:gs/\'/"'\\''"/}'"; }
 # -- basic
 alias sudo='sudo '
 
-alias ls='ls -hF'
+alias ls='ls -h'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -la'
@@ -70,4 +70,17 @@ chpwd_functions=($chpwd_functions __chpwd_auto_ls)
 # -- vim
 if has nvim; then
   alias vim=nvim
+fi
+
+# -- exa
+if has exa; then
+  eval $(_alias exa ' --time-style=long-iso --git --binary --group')
+  alias l='exa'
+  
+  alias la='exa --all'
+  alias lt='exa --tree'
+  
+  alias ll='exa --long'
+  alias lla='exa --long --all'
+  alias llt='exa --long --tree'
 fi

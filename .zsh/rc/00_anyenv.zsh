@@ -13,3 +13,4 @@ if pyenv virtualenv-init &>/dev/null; then
 fi
 
 export PIPENV_VENV_IN_PROJECT=1
+export PIPENV_VERBOSITY=-1

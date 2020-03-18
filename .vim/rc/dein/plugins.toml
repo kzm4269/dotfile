@@ -127,7 +127,6 @@ augroup END
 
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-lazy = 1
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
