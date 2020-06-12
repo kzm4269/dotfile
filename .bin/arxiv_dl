@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+import re
+import sys
+import subprocess as subp
+
+import arxiv
+import click
+
+
+@click.command()
+@click.argument('queries', nargs=-1)
+@click.option('-p', '--pdf', is_flag=True, help='Download a rendered PDF.')
+@click.option('-s', '--source', is_flag=True, help='Download source archive.')
+@click.option('-x', '--extract-source', is_flag=True, help='Extract a source archive.')
+def main(queries, pdf, source, extract_source):
+    for query in queries:
+        try:
+            match_url = re.match(r'https?://.*/(\d{4}\.\d{5})(\D.*|$)', query)
+            if match_url:
+                query = match_url.group(1)
+            paper = arxiv.query(query)[0]
+            print(paper['id'], '---', re.sub(r'\s\s+', ' ', paper['title']))
+            if pdf:
+                arxiv.download(
+                    paper,
+                    prefer_source_tarfile=False,
+                )
+            if source:
+                arxiv.download(
+                    paper,
+                    prefer_source_tarfile=True,
+                )
+                if extract_source:
+                    filename = arxiv.slugify(paper)
+                    subp.run(['tar', 'xzf', f'{filename}.tar.gz', '--one-top-level'], check=True)
+                    subp.run(['rm', f'{filename}.tar.gz'], check=True)
+        except Exception as e:
+            print(e)
+
+
+if __name__ == '__main__':
+    main()
