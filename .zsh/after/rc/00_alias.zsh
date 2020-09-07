@@ -1,7 +1,7 @@
 _alias() { echo alias $(alias $1 || echo "'$1=$1'")"'${2:gs/\'/"'\\''"/}'"; }
 
 # -- basic
-alias sudo='sudo '
+alias sudo='sudo -E '
 
 alias ls='ls -h'
 alias la='ls -a'

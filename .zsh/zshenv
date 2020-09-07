@@ -18,7 +18,10 @@ export LANGUAGE=
 eval $(env -0 | tr '\r\n' ' ' | sed 's/\x0/\n/g' | sed 's/=.*//' | grep '^LC_' | sed 's/.*/unset \0/')
 
 # -- EDITOR
-export EDITOR=vim
+export EDITOR="$(which vim)"
+if type nvim &>/dev/null; then
+  export EDITOR="$(which nvim)"
+fi
 export CVSEDITOR="$EDITOR"
 export SVN_EDITOR="$EDITOR"
 export GIT_EDITOR="$EDITOR"
