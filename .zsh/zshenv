@@ -1,10 +1,11 @@
 #zmodload zsh/zprof && zprof
+source /etc/profile
 
 umask 022
 limit coredumpsize 0
 
 # -- DOTPATH
-export DOTPATH="$(source "$HOME/.path")"
+export DOTPATH="$("$SHELL" "$HOME/.path")"
 
 # -- PATH, FPATH, ...
 #setopt no_global_rcs
@@ -41,6 +42,12 @@ path=($GOBIN $path)
 
 # -- RUST
 path=($HOME/.cargo/bin $path)
+
+# -- PYTHON
+path=($HOME/.poetry/bin $path)
+
+# -- Node
+path=($HOME/.yarn/bin $path)
 
 # -- local
 [ -s "$HOME/local/etc/zsh/zshenv" ] && source "$HOME/local/etc/zsh/zshenv"

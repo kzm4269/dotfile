@@ -7,10 +7,3 @@ fi
 if has anyenv; then
   eval "$(anyenv init - zsh)"
 fi
-
-if pyenv virtualenv-init &>/dev/null; then
-  eval "$(pyenv virtualenv-init -)"
-fi
-
-export PIPENV_VENV_IN_PROJECT=1
-export PIPENV_VERBOSITY=-1

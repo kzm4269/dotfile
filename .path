@@ -6,7 +6,7 @@ readlink_f() {
   local target
 
   target="$1"
-  cd "`dirname "$target"`"
+  \cd "`dirname "$target"`"
   target="`basename "$target"`"
 
   while [ -L "$target" ]; do
