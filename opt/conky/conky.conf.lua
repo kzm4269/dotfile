@@ -60,12 +60,12 @@ ${membar 6,200}${alignr}${memperc}%
 - ${top_mem name 3}${alignr}${top_mem mem 3}%
 ${hr}
 GPU
-${execpi 600 ~/.conky/gpu.sh}
+${execpi 600 ~/.conky/scripts/gpu.sh}
 ${hr}
-${execpi 10 ~/.conky/fs.sh}
+${execpi 10 ~/.conky/scripts/fs.sh}
 ${hr}
-${execpi 10 ~/.conky/diskio.sh}
+${execpi 10 ~/.conky/scripts/diskio.sh}
 ${hr}
-${execpi 10 ~/.conky/network.sh}
+${execpi 10 ~/.conky/scripts/network.sh}
 ${hr}
 ]];
