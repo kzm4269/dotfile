@@ -1,0 +1,213 @@
+# system
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+if = '''has('nvim')'''
+lazy = 1
+on_cmd = ['Denite', 'DeniteWithBufferDir']
+hook_add = '''
+nnoremap [Denite] <Nop>
+nmap <Leader>f [Denite]
+'''
+hook_source = '''
+let g:vinarise_enable_auto_detect = 1
+'''
+hook_post_source = '''
+'''
+
+# filetype
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+lazy = 1
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'smancill/conky-syntax.vim'
+lazy = 1
+on_ft = 'conkyrc'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+lazy = 1
+on_ft = 'json'
+hook_source = '''
+let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
+repo = 'Vimjas/vim-python-pep8-indent'
+lazy = 1
+on_ft = 'python'
+
+[[plugins]]
+repo = 'lervag/vimtex'
+lazy = 1
+on_ft = 'tex'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+lazy = 1
+on_ft = 'pug'
+
+[[plugins]]
+repo = 'vim-scripts/vim-stylus'
+lazy = 1
+on_ft = 'stylus'
+
+[[plugins]]
+repo = 'posva/vim-vue'
+lazy = 1
+on_ft = 'vue'
+
+# display
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = 'context_filetype.vim'
+hook_add = '''
+let g:precious_enable_switch_CursorHold = {'*' : 0}
+let g:precious_enable_switch_CursorMoved = {'*' : 0, 'help': 1}
+let g:precious_enable_switch_CursorMoved_i = {'*' : 0}
+
+augroup Vimrc
+  autocmd InsertEnter * :PreciousSwitch
+  autocmd InsertLeave * :PreciousReset
+augroup END
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_add = '''
+let g:indentLine_showFirstIndentLevel = -1
+let g:indentLine_conceallevel = 0
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+depends = 'vim-airline/vim-airline-themes'
+hook_add = '''
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#switch_buffers_and_tabs = 0
+
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#whitespace#checks = []
+
+let g:airline_theme = 'dark'
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+
+let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
+let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
+let g:airline_section_z = '%#__accent_bold#%4l/%L%#__restore__# %3v:%04B'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#whitespace#check(),0)}'
+'''
+
+
+# filer
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+hook_add = '''
+nnoremap <Leader>e :Defx<CR>
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  " Define mappings
+  nnoremap <silent><buffer><expr> <CR>
+  \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> <BS>
+  \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> c
+  \ defx#do_action('copy')
+  nnoremap <silent><buffer><expr> m
+  \ defx#do_action('move')
+  nnoremap <silent><buffer><expr> p
+  \ defx#do_action('paste')
+  nnoremap <silent><buffer><expr> l
+  \ defx#do_action('open_tree')
+  nnoremap <silent><buffer><expr> E
+  \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> P
+  \ defx#do_action('preview')
+  nnoremap <silent><buffer><expr> K
+  \ defx#do_action('new_directory')
+  nnoremap <silent><buffer><expr> N
+  \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> M
+  \ defx#do_action('new_multiple_files')
+  nnoremap <silent><buffer><expr> C
+  \ defx#do_action('toggle_columns',
+  \                'mark:indent:icon:filename:type:size:time')
+  nnoremap <silent><buffer><expr> S
+  \ defx#do_action('toggle_sort', 'time') . defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> d
+  \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+  \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> !
+  \ defx#do_action('execute_command')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('execute_system')
+  nnoremap <silent><buffer><expr> yy
+  \ defx#do_action('yank_path')
+  nnoremap <silent><buffer><expr> .
+  \ defx#do_action('toggle_ignored_files')
+  nnoremap <silent><buffer><expr> ;
+  \ defx#do_action('repeat')
+  nnoremap <silent><buffer><expr> h
+  \ defx#do_action('close_tree')
+  nnoremap <silent><buffer><expr> ~
+  \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+  \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+  \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> *
+  \ defx#do_action('toggle_select_all')
+  nnoremap <silent><buffer><expr> j
+  \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+  \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+  \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+  \ defx#do_action('print')
+  nnoremap <silent><buffer><expr> cd
+  \ defx#do_action('change_vim_cwd')
+endfunction
+'''
+
+# edit
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'

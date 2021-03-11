@@ -1,9 +1,0 @@
-if 1
-  let g:vim_root = expand('<sfile>:p:h')
-endif
-
-runtime! rc/*.vim
-
-if exists('v:version') && v:version >= 704 || has('nvim')
-  runtime! rc/dein/*.vim
-endif
