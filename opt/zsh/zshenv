@@ -5,7 +5,7 @@ umask 022
 limit coredumpsize 0
 
 # -- DOTPATH
-export DOTPATH="$("$SHELL" "$HOME/.path")"
+export DOTPATH="$(source "$HOME/.path")"
 
 # -- PATH, FPATH, ...
 #setopt no_global_rcs
