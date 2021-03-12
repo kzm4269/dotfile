@@ -1,10 +1,18 @@
 NVIM_EXECUTABLE := $(HOME)/local/bin/nvim
 
 .PHONY:
+install: $(NVIM_EXECUTABLE)
+
+.PHONY:
+deploy:
+	mkdir -p $(HOME)/.config
+	ln -snf $(CURDIR) $(HOME)/.config/nvim
+
+.PHONY:
 update:
 
 .PHONY:
-install: $(NVIM_EXECUTABLE)
+clean:
 
 $(NVIM_EXECUTABLE):
 	@mkdir -p $(@D)
