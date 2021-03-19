@@ -51,7 +51,7 @@
 	amend-message = commit --amend
 	track-remote-branches = !git-track-remote-branches
 [include]
-	path = ~/.gitconfig.local
+	path = /local/etc/git/local.gitconfig
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
