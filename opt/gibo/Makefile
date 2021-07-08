@@ -11,6 +11,7 @@ deploy:
 
 .PHONY:
 update:
+	@cd $(GIBO_HOME) && git pull
 
 .PHONY:
 clean:

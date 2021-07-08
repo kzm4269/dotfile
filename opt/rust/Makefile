@@ -10,6 +10,7 @@ deploy:
 
 .PHONY:
 update:
+	$(CARGO_HOME)/bin/rustup update
 
 .PHONY:
 clean:

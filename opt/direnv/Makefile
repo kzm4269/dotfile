@@ -11,6 +11,7 @@ deploy:
 
 .PHONY:
 update:
+	bash install.sh
 
 .PHONY:
 clean:

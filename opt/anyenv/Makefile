@@ -14,6 +14,10 @@ deploy:
 
 .PHONY:
 update:
+	@cd $(ANYENV_HOME) && git pull
+	@cd $(PYENV_HOME) && git pull
+	@cd $(PYENV_VIRTUALENV) && git pull
+	@cd $(PYENV_WHICH_EXT) && git pull
 
 .PHONY:
 clean:

@@ -11,6 +11,7 @@ deploy:
 
 .PHONY:
 update:
+	@cd $(ZPLUG_HOME) && git pull
 
 .PHONY:
 clean:
