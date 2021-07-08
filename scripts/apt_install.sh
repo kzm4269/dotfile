@@ -1,7 +1,9 @@
 #!/bin/bash
 has() { type $1 &>/dev/null; }
 
-if has apt; then
+if has apt-fast; then
+  apt=apt-fast
+elif has apt; then
   apt=apt
 elif has aptitude; then
   apt=aptitude
@@ -13,18 +15,13 @@ fi
 
 sudo $apt update || exit 1
 
-#  build
-sudo $apt install -y build-essential
-sudo $apt install -y cmake
+sudo $apt install -y \
+  build-essential \
+  cmake \
+  curl \
+  unar \
+  tmux \
+  zsh \
+  golang \
+  xsel \
 
-# network
-sudo $apt install -y curl
-
-# archive
-sudo $apt install -y unar
-
-# terminal
-sudo $apt install -y tmux
-sudo $apt install -y zsh
-sudo $apt install -y golang
-sudo $apt install -y xsel
