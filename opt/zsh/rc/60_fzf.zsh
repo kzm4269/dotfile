@@ -31,7 +31,7 @@ fi
 export FZF_COMPLETION_TRIGGER='~~'
 
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2>/dev/null'
-export FZF_CTRL_T_OPTS='--preview "preview {} 100"'
+export FZF_CTRL_T_OPTS='--preview "bat {}"'
 
 if type rg &>/dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
