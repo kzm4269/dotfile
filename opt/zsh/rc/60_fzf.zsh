@@ -28,12 +28,20 @@ if [ "$(tput colors)" -ge 256 ]; then
   '
 fi
 
-export FZF_COMPLETION_TRIGGER='~~'
+export FZF_COMPLETION_TRIGGER='**'
 
 export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*" 2>/dev/null'
-export FZF_CTRL_T_OPTS='--preview "bat {}"'
+
+if type bat &>/dev/null; then
+  export FZF_CTRL_T_OPTS='--preview "bat --color=always {}"'
+  
+  _fzf_complete_gibo() {
+    _fzf_complete \
+      --preview 'gibo dump {} | bat --color=always --file-name=.gitignore' \
+      -- "$@" < <(gibo list)
+  }
+fi
 
 if type rg &>/dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
 fi
-
