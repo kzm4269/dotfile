@@ -22,7 +22,9 @@ function __prompt() {
     vcs="%F{yellow}%~%f"
   fi
   
-  echo "[%m:$vcs]"
+  local hostaddr
+  hostaddr="$(hostname -I | grep -oP '172.[0-9.]+' | head -n 1)"
+  echo "[$hostaddr:$vcs]"
   echo '%n%(?.$.%F{red}$%f) '
 }
 
