@@ -10,11 +10,12 @@ install: $(FZF_HOME)
 deploy:
 
 .PHONY:
-update:
-	@cd $(FZF_HOME) && git pull
+update: $(FZF_HOME)
+	cd $(FZF_HOME) && git fetch origin 0.42.0 && git checkout 0.42.0 && git reset --hard
 
 .PHONY:
 clean:
+	rm -rf $(FZF_HOME) ~/.fzf.bash ~/.fzf.zsh
 
 $(FZF_HOME):
-	git clone --depth 1 https://github.com/junegunn/fzf.git $@
+	git clone https://github.com/junegunn/fzf.git $@

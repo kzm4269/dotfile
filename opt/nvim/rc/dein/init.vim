@@ -1,19 +1,27 @@
-let s:dein_cache = expand('~/.cache/dein')
-let s:dein_rc = expand('<sfile>:p:h')
-
-" Install dein.vim
-let s:dein_repo = s:dein_cache .'/repos/github.com/Shougo/dein.vim'
-if &runtimepath !~ '/dein.vim'
-  if !isdirectory(s:dein_repo)
-    execute '!curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | sh -s -- ' s:dein_cache
+" dein.vim - Basic installation
+let $CACHE = expand('~/.cache')
+if !($CACHE->isdirectory())
+  call mkdir($CACHE, 'p')
+endif
+if &runtimepath !~# '/dein.vim'
+  let s:dir = 'dein.vim'->fnamemodify(':p')
+  if !(s:dir->isdirectory())
+    let s:dir = $CACHE .. '/dein/repos/github.com/Shougo/dein.vim'
+    if !(s:dir->isdirectory())
+      execute '!git clone https://github.com/Shougo/dein.vim' s:dir
+    endif
   endif
-  execute 'set runtimepath+=' . fnamemodify(s:dein_repo, ':p')
+  execute 'set runtimepath^=' .. s:dir->fnamemodify(':p')->substitute('[/\\]$', '', '')
 endif
 
+let s:dein_base = expand('~/.cache/dein')
+let s:dein_src = expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+let s:dein_rc = expand('<sfile>:p:h')
+
 " Load .toml files
-if dein#load_state(s:dein_cache)
-  call dein#begin(s:dein_cache)
-  call dein#add(s:dein_repo)
+if dein#load_state(s:dein_base)
+  call dein#begin(s:dein_base)
+  call dein#add(s:dein_src)
   call dein#load_toml(s:dein_rc . '/plugins.toml')
   call dein#end()
   call dein#save_state()
